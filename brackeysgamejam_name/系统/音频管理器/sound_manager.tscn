@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://pmcncgwc708q"]
+
+[ext_resource type="Script" path="res://系统/音频管理器/sound_manager.gd" id="1_vgxw0"]
+
+[node name="SoundManager" type="Node"]
+script = ExtResource("1_vgxw0")
+
+[node name="SFX" type="Node" parent="."]
+
+[node name="UIpress" type="AudioStreamPlayer" parent="SFX"]
+bus = &"SFX"
+
+[node name="BGMPlayer" type="AudioStreamPlayer" parent="."]
+bus = &"BGM"

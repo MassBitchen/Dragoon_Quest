@@ -1,0 +1,67 @@
+[gd_scene load_steps=9 format=3 uid="uid://d3pdj2pxxurb6"]
+
+[ext_resource type="Script" path="res://脚本/StateMachine.gd" id="1_o6q0p"]
+[ext_resource type="Script" path="res://场景/人物/主角/player.gd" id="1_srj1n"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g5m70"]
+size = Vector2(20, 10)
+
+[sub_resource type="Animation" id="Animation_8dxay"]
+resource_name = "fall"
+
+[sub_resource type="Animation" id="Animation_m4m7a"]
+resource_name = "idle"
+
+[sub_resource type="Animation" id="Animation_vxyjm"]
+resource_name = "jump"
+
+[sub_resource type="Animation" id="Animation_mh7oq"]
+resource_name = "run"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_d4btm"]
+_data = {
+"fall": SubResource("Animation_8dxay"),
+"idle": SubResource("Animation_m4m7a"),
+"jump": SubResource("Animation_vxyjm"),
+"run": SubResource("Animation_mh7oq")
+}
+
+[node name="Player" type="CharacterBody2D"]
+collision_layer = 2
+script = ExtResource("1_srj1n")
+
+[node name="Body" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Body"]
+
+[node name="PlayerArea" type="Area2D" parent="Body"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Body/PlayerArea"]
+
+[node name="ColorRect" type="ColorRect" parent="Body"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -16.0
+offset_top = -64.0
+offset_right = 16.0
+grow_horizontal = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -5)
+shape = SubResource("RectangleShape2D_g5m70")
+debug_color = Color(0.205172, 0.574725, 1.92523e-07, 0.42)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_d4btm")
+}
+
+[node name="Timer" type="Node" parent="."]
+
+[node name="CoyoteTimer" type="Timer" parent="Timer"]
+
+[node name="JumpRequestTimer" type="Timer" parent="Timer"]
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource("1_o6q0p")

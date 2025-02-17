@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://c5jwvlk3fol5g"]
+
+[ext_resource type="PackedScene" uid="uid://bcdxtwprt24cm" path="res://场景/地图/继承/level.tscn" id="1_s1ums"]
+[ext_resource type="PackedScene" uid="uid://d3pdj2pxxurb6" path="res://场景/人物/主角/player.tscn" id="2_nulvh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yknwc"]
+size = Vector2(1184, 20)
+
+[node name="Level_1" instance=ExtResource("1_s1ums")]
+
+[node name="Player" parent="." index="1" instance=ExtResource("2_nulvh")]
+position = Vector2(238, 395)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." index="2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" index="0"]
+position = Vector2(580, 542)
+shape = SubResource("RectangleShape2D_yknwc")

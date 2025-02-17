@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://cj0gctse0pcy0"]
+
+[ext_resource type="Script" path="res://系统/Game/game.gd" id="1_hi6ew"]
+
+[node name="Game" type="CanvasLayer"]
+script = ExtResource("1_hi6ew")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
