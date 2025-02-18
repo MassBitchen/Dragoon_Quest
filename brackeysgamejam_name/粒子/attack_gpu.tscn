@@ -1,0 +1,66 @@
+[gd_scene load_steps=13 format=3 uid="uid://djw3htxsye74s"]
+
+[ext_resource type="Texture2D" uid="uid://cqycdvxooon04" path="res://_资源/red.png" id="1_cmf22"]
+
+[sub_resource type="Gradient" id="Gradient_6g31v"]
+colors = PackedColorArray(1, 1, 1, 0.501961, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_p6n5a"]
+gradient = SubResource("Gradient_6g31v")
+
+[sub_resource type="Curve" id="Curve_17c0b"]
+_data = [Vector2(0, 0.562584), 0.0, 0.0, 0, 0, Vector2(0.494983, 0.982503), 0.0, 0.0, 0, 0, Vector2(1, 0.536339), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_trtpc"]
+_data = [Vector2(0, 0.510094), 0.0, 0.0, 0, 0, Vector2(0.481605, 0.991252), 0.0, 0.0, 0, 0, Vector2(1, 0.641319), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_6xuk5"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_imjj5"]
+curve_x = SubResource("Curve_17c0b")
+curve_y = SubResource("Curve_trtpc")
+curve_z = SubResource("Curve_6xuk5")
+
+[sub_resource type="Curve" id="Curve_5i5ls"]
+max_value = 3.0
+_data = [Vector2(0.0100335, 1.63526), 0.0, 0.0, 0, 0, Vector2(0.989967, 1.26783), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_o00jn"]
+max_value = 3.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.494983, 3), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_7hhsx"]
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_qyous"]
+curve_x = SubResource("Curve_5i5ls")
+curve_y = SubResource("Curve_o00jn")
+curve_z = SubResource("Curve_7hhsx")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_q0knd"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 128.0
+gravity = Vector3(0, 0, 0)
+linear_accel_min = -100.0
+linear_accel_max = -2.23517e-06
+radial_accel_min = -100.0
+radial_accel_max = -100.0
+scale_min = 0.6
+scale_max = 1.2
+scale_curve = SubResource("CurveXYZTexture_imjj5")
+scale_over_velocity_curve = SubResource("CurveXYZTexture_qyous")
+color = Color(1, 0, 0.027451, 1)
+color_initial_ramp = SubResource("GradientTexture1D_p6n5a")
+
+[node name="Attack_GPU" type="GPUParticles2D"]
+amount = 50
+process_material = SubResource("ParticleProcessMaterial_q0knd")
+texture = ExtResource("1_cmf22")
+lifetime = 1.5
+speed_scale = 2.0

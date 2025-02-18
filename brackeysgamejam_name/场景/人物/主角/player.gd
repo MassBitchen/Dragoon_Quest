@@ -3,6 +3,9 @@ extends CharacterBody2D
 #组件
 @onready var body: Node2D = $Body
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var sprite_2d: Sprite2D = $Body/Sprite2D
+@onready var attack_gpu: GPUParticles2D = $Body/Attack_GPU
+@onready var attack_light: PointLight2D = $Body/Attack_light
 #Timer
 @onready var coyote_timer: Timer = $Timer/CoyoteTimer
 @onready var jump_request_timer: Timer = $Timer/JumpRequestTimer
@@ -15,6 +18,7 @@ enum State{
 	RUN,
 	JUMP,
 	FALL,
+	ATTACK,
 }
 #方向
 enum Direction {
@@ -27,11 +31,11 @@ enum Direction {
 		if not is_node_ready():
 			await ready
 		body.scale.x = direction
-const RUN_SPEED := 120.0
+const RUN_SPEED := 300.0
 const FLOOR_ACCELERATION := RUN_SPEED / 0.02
 const AIR_ACCELERATION := RUN_SPEED / 0.03
-const JUMP_VELOCITY := -320.0
-var default_gravity := ProjectSettings.get("physics/2d/default_gravity") as float
+const JUMP_VELOCITY := -500.0
+var default_gravity := ProjectSettings.get("physics/2d/default_gravity") * 2 as float
 #预处理
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("jump"):
@@ -49,6 +53,7 @@ func tick_physics(state: State, _delta: float) -> void:
 	#玩家位置发布，给怪物寻路
 	
 	#穿越单向平台
+	
 	match state:
 		State.IDLE:
 			Player_move(default_gravity, get_process_delta_time(), 1)
@@ -58,6 +63,8 @@ func tick_physics(state: State, _delta: float) -> void:
 			Player_move(default_gravity, get_process_delta_time(), 1)
 		State.FALL:
 			Player_move(default_gravity, get_process_delta_time(), 1)
+		State.ATTACK:
+			pass
 #状态机转状态
 func get_next_state(state: State) -> int:
 	var H_is_still := is_zero_approx(velocity.x)
@@ -68,28 +75,53 @@ func get_next_state(state: State) -> int:
 		return State.JUMP
 	match state:
 		State.IDLE:
-			pass
+			if not H_is_still:
+				return State.RUN
+			if Input.get_action_strength("attack"):
+				return State.ATTACK
 		State.RUN:
-			pass
+			if H_is_still:
+				return State.IDLE
+			if Input.get_action_strength("attack"):
+				return State.ATTACK
 		State.JUMP:
-			pass
+			if velocity.y > 0:
+				return State.FALL
 		State.FALL:
-			pass
+			if velocity.y == 0:
+				return State.IDLE
+		State.ATTACK:
+			if not Input.get_action_strength("attack"):
+				return State.IDLE
 	return StateMachine.KEEP_CURRENT
 #状态执行函数
-func transition_state(_from: State, to: State) -> void:
+func transition_state(from: State, to: State) -> void:
+	if from == State.FALL:
+		var tween := create_tween()
+		tween.tween_property(sprite_2d, "scale", Vector2(0.5,0.4), 0.1)
+		tween.tween_property(sprite_2d, "scale", Vector2(0.5,0.5), 0.1)
+	if from == State.ATTACK:
+		attack_gpu.emitting = false
+		attack_light.enabled = false
 	match to:
 		State.IDLE:
 			animation_player.play("idle")
 		State.RUN:
 			animation_player.play("run")
 		State.JUMP:
+			animation_player.play("jump")
 			velocity.y = JUMP_VELOCITY
 			coyote_timer.stop()
 			jump_request_timer.stop()
-			animation_player.play("jump")
+			var tween := create_tween()
+			tween.tween_property(sprite_2d, "scale", Vector2(0.4,0.5), 0.1)
+			tween.tween_property(sprite_2d, "scale", Vector2(0.5,0.5), 0.1)
 		State.FALL:
 			animation_player.play("fall")
+		State.ATTACK:
+			animation_player.play("attack")
+			attack_gpu.emitting = true
+			attack_light.enabled = true
 #移动方法---
 func Player_move(gravity: float, delta: float, rate: float) -> void:
 	#返回一个+-1
@@ -97,9 +129,8 @@ func Player_move(gravity: float, delta: float, rate: float) -> void:
 	#判断摩擦
 	var acceleration := FLOOR_ACCELERATION if is_on_floor() else AIR_ACCELERATION
 	#限制速度
-	velocity.limit_length(200)
 	velocity.x = move_toward(velocity.x, movement * RUN_SPEED * rate, acceleration * delta)
-	if abs(velocity.y) <= 330:
+	if abs(velocity.y) <= -JUMP_VELOCITY:
 		velocity.y += gravity * delta
 		if velocity.y > 0:
 			velocity.y += 0
