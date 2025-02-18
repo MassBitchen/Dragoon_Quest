@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://diniirrj7ko4p"]
+[gd_scene load_steps=21 format=3 uid="uid://diniirrj7ko4p"]
 
 [ext_resource type="PackedScene" uid="uid://bcdxtwprt24cm" path="res://场景/地图/继承/level.tscn" id="1_qb0vt"]
 [ext_resource type="Script" path="res://场景/地图/_main/main.gd" id="2_2d852"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://ske7om1ggl4f" path="res://_资源/2/_0004_waterway2.png" id="3_qeljq"]
 [ext_resource type="PackedScene" uid="uid://bgwduib0f5h5d" path="res://场景/小组件/留言板/textboard.tscn" id="4_j43x0"]
 [ext_resource type="PackedScene" uid="uid://cmlt5k61om75r" path="res://场景/小组件/门/door.tscn" id="5_hui5q"]
+[ext_resource type="PackedScene" uid="uid://yv21d5ap61pu" path="res://场景/小组件/摄像机/camera.tscn" id="8_yyvng"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xiwv6"]
 size = Vector2(318, 65)
@@ -168,17 +169,85 @@ texture = ExtResource("3_qeljq")
 position = Vector2(165, 1030.5)
 shape = SubResource("RectangleShape2D_xiwv6")
 
-[node name="door" parent="." index="1" instance=ExtResource("5_hui5q")]
-position = Vector2(529, 1016)
+[node name="StaticBody2D8" type="StaticBody2D" parent="TileMap" index="8"]
+position = Vector2(-944, 21)
 
-[node name="textboard" parent="." index="2" instance=ExtResource("4_j43x0")]
+[node name="0004Waterway2" type="Sprite2D" parent="TileMap/StaticBody2D8" index="0"]
+position = Vector2(165, 1031)
+texture = ExtResource("3_qeljq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/StaticBody2D8" index="1"]
+position = Vector2(165, 1030.5)
+shape = SubResource("RectangleShape2D_xiwv6")
+
+[node name="StaticBody2D9" type="StaticBody2D" parent="TileMap" index="9"]
+position = Vector2(-626, 21)
+
+[node name="0004Waterway2" type="Sprite2D" parent="TileMap/StaticBody2D9" index="0"]
+position = Vector2(165, 1031)
+texture = ExtResource("3_qeljq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/StaticBody2D9" index="1"]
+position = Vector2(165, 1030.5)
+shape = SubResource("RectangleShape2D_xiwv6")
+
+[node name="StaticBody2D10" type="StaticBody2D" parent="TileMap" index="10"]
+position = Vector2(-308, 21)
+
+[node name="0004Waterway2" type="Sprite2D" parent="TileMap/StaticBody2D10" index="0"]
+position = Vector2(165, 1031)
+texture = ExtResource("3_qeljq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/StaticBody2D10" index="1"]
+position = Vector2(165, 1030.5)
+shape = SubResource("RectangleShape2D_xiwv6")
+
+[node name="StaticBody2D11" type="StaticBody2D" parent="TileMap" index="11"]
+position = Vector2(2184, 21)
+
+[node name="0004Waterway2" type="Sprite2D" parent="TileMap/StaticBody2D11" index="0"]
+position = Vector2(165, 1031)
+texture = ExtResource("3_qeljq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/StaticBody2D11" index="1"]
+position = Vector2(165, 1030.5)
+shape = SubResource("RectangleShape2D_xiwv6")
+
+[node name="StaticBody2D12" type="StaticBody2D" parent="TileMap" index="12"]
+position = Vector2(2502, 21)
+
+[node name="0004Waterway2" type="Sprite2D" parent="TileMap/StaticBody2D12" index="0"]
+position = Vector2(165, 1031)
+texture = ExtResource("3_qeljq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/StaticBody2D12" index="1"]
+position = Vector2(165, 1030.5)
+shape = SubResource("RectangleShape2D_xiwv6")
+
+[node name="StaticBody2D13" type="StaticBody2D" parent="TileMap" index="13"]
+position = Vector2(2820, 21)
+
+[node name="0004Waterway2" type="Sprite2D" parent="TileMap/StaticBody2D13" index="0"]
+position = Vector2(165, 1031)
+texture = ExtResource("3_qeljq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/StaticBody2D13" index="1"]
+position = Vector2(165, 1030.5)
+shape = SubResource("RectangleShape2D_xiwv6")
+
+[node name="door" parent="." index="2" instance=ExtResource("5_hui5q")]
+position = Vector2(529, 1016)
+path = "res://场景/地图/1/level_1.tscn"
+entry_point = "entry1d"
+
+[node name="textboard" parent="." index="3" instance=ExtResource("4_j43x0")]
 position = Vector2(339, 1017)
 text = "你们好"
 
-[node name="Player" parent="." index="3" instance=ExtResource("2_x3tw1")]
+[node name="Player" parent="." index="4" instance=ExtResource("2_x3tw1")]
 position = Vector2(122, 1018)
 
-[node name="title" type="RichTextLabel" parent="." index="4"]
+[node name="title" type="RichTextLabel" parent="." index="5"]
 offset_left = 6.0
 offset_top = -348.0
 offset_right = 1975.0
@@ -200,7 +269,7 @@ scale = Vector2(2, 2)
 texture = SubResource("GradientTexture2D_bg78g")
 height = 20.0
 
-[node name="light" type="Node2D" parent="." index="5"]
+[node name="light" type="Node2D" parent="." index="6"]
 
 [node name="CanvasModulate" type="CanvasModulate" parent="light" index="0"]
 color = Color(0, 0, 0, 1)
@@ -216,3 +285,6 @@ position = Vector2(0, 31)
 scale = Vector2(2, 2)
 texture = SubResource("GradientTexture2D_bg78g")
 height = 20.0
+
+[node name="Camera" parent="." index="7" instance=ExtResource("8_yyvng")]
+limit_bottom = 1080

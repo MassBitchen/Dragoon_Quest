@@ -8,3 +8,5 @@ script = ExtResource("1_mhbgw")
 [node name="TileMap" type="Node2D" parent="."]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="TileMap"]
+
+[node name="EntryPoint" type="Node2D" parent="."]

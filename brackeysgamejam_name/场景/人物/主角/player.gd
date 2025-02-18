@@ -3,6 +3,7 @@ extends CharacterBody2D
 #组件
 @onready var body: Node2D = $Body
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var player_eye: AnimatedSprite2D = $Body/PlayerEye
 @onready var sprite_2d: Sprite2D = $Body/Sprite2D
 @onready var attack_gpu: GPUParticles2D = $Body/Attack_GPU
 @onready var attack_light: PointLight2D = $Body/Attack_light
@@ -12,6 +13,7 @@ extends CharacterBody2D
 #Timer
 @onready var coyote_timer: Timer = $Timer/CoyoteTimer
 @onready var jump_request_timer: Timer = $Timer/JumpRequestTimer
+@onready var wink_timer: Timer = $Timer/WinkTimer
 #可交互组件
 var interacting_with: Array[Interactable]
 #移动相关
@@ -39,6 +41,8 @@ const FLOOR_ACCELERATION := RUN_SPEED / 0.02
 const AIR_ACCELERATION := RUN_SPEED / 0.03
 const JUMP_VELOCITY := -500.0
 var default_gravity := ProjectSettings.get("physics/2d/default_gravity") * 2 as float
+#玩家位置
+var PlayerPosition :Vector2 = Vector2.ZERO
 #预处理
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("jump"):
@@ -49,14 +53,18 @@ func _unhandled_input(event: InputEvent) -> void:
 			velocity.y = JUMP_VELOCITY / 3
 	if event.is_action_pressed("interact") and interacting_with and interacting_label.visible:
 		interacting_with.back().interact()
+#ready
+func _ready() -> void:
+	randomize()
 #帧处理动画
 func tick_physics(state: State, _delta: float) -> void:
 	#让攻击箭头位置正确
 	arrow.global_position = attack_pos.global_position
 	#判断交互提示是否出现
 	interacting_label.visible = !interacting_with.is_empty()
-	#玩家位置发布，给怪物寻路
-	
+	#玩家位置发布，给怪物和相机寻路
+	PlayerPosition = self.position
+	Game.emit_signal("player_position_update",PlayerPosition)
 	#穿越单向平台
 	
 	match state:
@@ -107,6 +115,9 @@ func transition_state(from: State, to: State) -> void:
 		var tween := create_tween()
 		tween.tween_property(sprite_2d, "scale", Vector2(0.5,0.4), 0.1)
 		tween.tween_property(sprite_2d, "scale", Vector2(0.5,0.5), 0.1)
+		var eye_tween := create_tween()
+		eye_tween.tween_property(player_eye, "scale", Vector2(0.5,0.4), 0.1)
+		eye_tween.tween_property(player_eye, "scale", Vector2(0.5,0.5), 0.1)
 	if from == State.ATTACK:
 		attack_gpu.emitting = false
 		attack_light.enabled = false
@@ -125,6 +136,9 @@ func transition_state(from: State, to: State) -> void:
 			var tween := create_tween()
 			tween.tween_property(sprite_2d, "scale", Vector2(0.4,0.5), 0.1)
 			tween.tween_property(sprite_2d, "scale", Vector2(0.5,0.5), 0.1)
+			var eye_tween := create_tween()
+			eye_tween.tween_property(player_eye, "scale", Vector2(0.4,0.5), 0.1)
+			eye_tween.tween_property(player_eye, "scale", Vector2(0.5,0.5), 0.1)
 		State.FALL:
 			animation_player.play("fall")
 		State.ATTACK:
@@ -161,3 +175,7 @@ func unregister_interactable(v: Interactable) -> void:
 func play_sfx(name: String) -> void:
 	SoundManager.play_sfx(name)
 #信号---
+#眨眼倒计时
+func _on_wink_timer_timeout() -> void:
+	player_eye.play("wink")
+	wink_timer.wait_time = randf_range(3, 6)
