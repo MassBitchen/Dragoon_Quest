@@ -1,6 +1,7 @@
-[gd_scene load_steps=19 format=3 uid="uid://diniirrj7ko4p"]
+[gd_scene load_steps=20 format=3 uid="uid://diniirrj7ko4p"]
 
 [ext_resource type="PackedScene" uid="uid://bcdxtwprt24cm" path="res://场景/地图/继承/level.tscn" id="1_qb0vt"]
+[ext_resource type="Script" path="res://场景/地图/_main/main.gd" id="2_2d852"]
 [ext_resource type="PackedScene" uid="uid://d3pdj2pxxurb6" path="res://场景/人物/主角/player.tscn" id="2_x3tw1"]
 [ext_resource type="Texture2D" uid="uid://kxv7ay2krw8x" path="res://_资源/测试/campfire.png" id="3_lpqem"]
 [ext_resource type="Texture2D" uid="uid://ske7om1ggl4f" path="res://_资源/2/_0004_waterway2.png" id="3_qeljq"]
@@ -88,6 +89,7 @@ fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(1, 1)
 
 [node name="main" instance=ExtResource("1_qb0vt")]
+script = ExtResource("2_2d852")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="TileMap" index="1"]
 position = Vector2(-6, 21)
@@ -176,7 +178,29 @@ text = "你们好"
 [node name="Player" parent="." index="3" instance=ExtResource("2_x3tw1")]
 position = Vector2(122, 1018)
 
-[node name="light" type="Node2D" parent="." index="4"]
+[node name="title" type="RichTextLabel" parent="." index="4"]
+offset_left = 6.0
+offset_top = -348.0
+offset_right = 1975.0
+offset_bottom = -23.0
+theme_override_font_sizes/normal_font_size = 128
+bbcode_enabled = true
+text = "[wave][center]Dragoon Quest[/center][/wave]
+[font_size=84][shake][center]What can go wrong[/center][shake]"
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="title" index="1"]
+position = Vector2(975, 199)
+sprite_frames = SubResource("SpriteFrames_0eu0y")
+autoplay = "default"
+frame_progress = 0.0900034
+
+[node name="PointLight2D" type="PointLight2D" parent="title/AnimatedSprite2D2" index="0"]
+position = Vector2(0, 31)
+scale = Vector2(2, 2)
+texture = SubResource("GradientTexture2D_bg78g")
+height = 20.0
+
+[node name="light" type="Node2D" parent="." index="5"]
 
 [node name="CanvasModulate" type="CanvasModulate" parent="light" index="0"]
 color = Color(0, 0, 0, 1)

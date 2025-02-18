@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://bby16skaep1rl"]
+
+[ext_resource type="Texture2D" uid="uid://bbey1ywrttwht" path="res://_资源/arrow.png" id="1_lbrn1"]
+[ext_resource type="Script" path="res://场景/小组件/攻击箭头/arrow.gd" id="2_3r8oi"]
+
+[node name="arrow" type="Sprite2D"]
+texture = ExtResource("1_lbrn1")
+offset = Vector2(39, -1)
+script = ExtResource("2_3r8oi")

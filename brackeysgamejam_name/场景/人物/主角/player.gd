@@ -7,6 +7,8 @@ extends CharacterBody2D
 @onready var attack_gpu: GPUParticles2D = $Body/Attack_GPU
 @onready var attack_light: PointLight2D = $Body/Attack_light
 @onready var interacting_label: Label = $UI/interacting_label
+@onready var arrow: Sprite2D = $arrow
+@onready var attack_pos: Marker2D = $Body/Mark2D/attack_pos
 #Timer
 @onready var coyote_timer: Timer = $Timer/CoyoteTimer
 @onready var jump_request_timer: Timer = $Timer/JumpRequestTimer
@@ -49,6 +51,8 @@ func _unhandled_input(event: InputEvent) -> void:
 		interacting_with.back().interact()
 #帧处理动画
 func tick_physics(state: State, _delta: float) -> void:
+	#让攻击箭头位置正确
+	arrow.global_position = attack_pos.global_position
 	#判断交互提示是否出现
 	interacting_label.visible = !interacting_with.is_empty()
 	#玩家位置发布，给怪物寻路
@@ -106,6 +110,7 @@ func transition_state(from: State, to: State) -> void:
 	if from == State.ATTACK:
 		attack_gpu.emitting = false
 		attack_light.enabled = false
+		arrow.visible = false
 	match to:
 		State.IDLE:
 			animation_player.play("idle")
@@ -126,6 +131,7 @@ func transition_state(from: State, to: State) -> void:
 			animation_player.play("attack")
 			attack_gpu.emitting = true
 			attack_light.enabled = true
+			arrow.visible = true
 #移动方法---
 func Player_move(gravity: float, delta: float, rate: float) -> void:
 	#返回一个+-1
