@@ -31,6 +31,12 @@ window/size/viewport_height=1080
 window/size/window_width_override=1152
 window/size/window_height_override=648
 window/stretch/mode="canvas_items"
+mouse_cursor/custom_image="res://_资源/mouse.png"
+mouse_cursor/tooltip_position_offset=Vector2(25, 25)
+
+[gui]
+
+theme/custom_font="res://_资源/Font.ttf"
 
 [input]
 

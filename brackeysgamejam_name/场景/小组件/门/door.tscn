@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://cmlt5k61om75r"]
+
+[ext_resource type="Script" path="res://场景/小组件/门/door.gd" id="1_uk2x2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xav1b"]
+size = Vector2(90, 118.5)
+
+[node name="door" type="Area2D"]
+script = ExtResource("1_uk2x2")
+
+[node name="body" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="body"]
+
+[node name="ColorRect" type="ColorRect" parent="body"]
+offset_left = -42.0
+offset_top = -112.0
+offset_right = 42.0
+offset_bottom = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -54.75)
+shape = SubResource("RectangleShape2D_xav1b")

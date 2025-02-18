@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://pmcncgwc708q"]
+[gd_scene load_steps=5 format=3 uid="uid://pmcncgwc708q"]
 
 [ext_resource type="Script" path="res://系统/音频管理器/sound_manager.gd" id="1_vgxw0"]
+[ext_resource type="AudioStream" uid="uid://dwrgu1hkblrit" path="res://_资源/3/run_1.wav" id="2_q3ixe"]
+[ext_resource type="AudioStream" uid="uid://do4lmaoeicbil" path="res://_资源/3/run_2.wav" id="3_fe444"]
+[ext_resource type="AudioStream" uid="uid://c7tit5fiesn67" path="res://_资源/3/jump.wav" id="4_q61dw"]
 
 [node name="SoundManager" type="Node"]
 script = ExtResource("1_vgxw0")
@@ -8,6 +11,18 @@ script = ExtResource("1_vgxw0")
 [node name="SFX" type="Node" parent="."]
 
 [node name="UIpress" type="AudioStreamPlayer" parent="SFX"]
+bus = &"SFX"
+
+[node name="run_1" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("2_q3ixe")
+bus = &"SFX"
+
+[node name="run_2" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("3_fe444")
+bus = &"SFX"
+
+[node name="jump" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("4_q61dw")
 bus = &"SFX"
 
 [node name="BGMPlayer" type="AudioStreamPlayer" parent="."]

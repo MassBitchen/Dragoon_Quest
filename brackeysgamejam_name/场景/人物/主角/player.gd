@@ -6,6 +6,7 @@ extends CharacterBody2D
 @onready var sprite_2d: Sprite2D = $Body/Sprite2D
 @onready var attack_gpu: GPUParticles2D = $Body/Attack_GPU
 @onready var attack_light: PointLight2D = $Body/Attack_light
+@onready var interacting_label: Label = $UI/interacting_label
 #Timer
 @onready var coyote_timer: Timer = $Timer/CoyoteTimer
 @onready var jump_request_timer: Timer = $Timer/JumpRequestTimer
@@ -44,12 +45,12 @@ func _unhandled_input(event: InputEvent) -> void:
 		jump_request_timer.stop()
 		if velocity.y < JUMP_VELOCITY / 3:
 			velocity.y = JUMP_VELOCITY / 3
-	if event.is_action_pressed("interact") and interacting_with:
+	if event.is_action_pressed("interact") and interacting_with and interacting_label.visible:
 		interacting_with.back().interact()
 #帧处理动画
 func tick_physics(state: State, _delta: float) -> void:
 	#判断交互提示是否出现
-	
+	interacting_label.visible = !interacting_with.is_empty()
 	#玩家位置发布，给怪物寻路
 	
 	#穿越单向平台
@@ -84,6 +85,8 @@ func get_next_state(state: State) -> int:
 				return State.IDLE
 			if Input.get_action_strength("attack"):
 				return State.ATTACK
+			if velocity.y > 0:
+				return State.FALL
 		State.JUMP:
 			if velocity.y > 0:
 				return State.FALL
@@ -110,6 +113,7 @@ func transition_state(from: State, to: State) -> void:
 			animation_player.play("run")
 		State.JUMP:
 			animation_player.play("jump")
+			play_sfx("jump")
 			velocity.y = JUMP_VELOCITY
 			coyote_timer.stop()
 			jump_request_timer.stop()
@@ -147,4 +151,7 @@ func register_interactable(v: Interactable) -> void:
 #交互退出
 func unregister_interactable(v: Interactable) -> void:
 	interacting_with.erase(v)
+#音效播放
+func play_sfx(name: String) -> void:
+	SoundManager.play_sfx(name)
 #信号---
