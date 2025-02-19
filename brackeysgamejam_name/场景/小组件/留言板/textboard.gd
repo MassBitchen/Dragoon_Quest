@@ -9,6 +9,7 @@ func _ready() -> void:
 
 func _on_ischeck() -> void:
 	animation_player.play("open")
+	SoundManager.play_sfx("textboard")
 
 func _on_nocheck() -> void:
 	animation_player.play("close")

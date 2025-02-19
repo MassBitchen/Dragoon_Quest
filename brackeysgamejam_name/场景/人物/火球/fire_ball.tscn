@@ -1,0 +1,60 @@
+[gd_scene load_steps=9 format=3 uid="uid://bdtcw2tsdhgu6"]
+
+[ext_resource type="Texture2D" uid="uid://4ko02lyg8nr6" path="res://_资源/1/火球.png" id="1_fe0b2"]
+[ext_resource type="Script" path="res://场景/人物/火球/fire_ball.gd" id="2_malds"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sgaqn"]
+atlas = ExtResource("1_fe0b2")
+region = Rect2(0, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ew0w"]
+atlas = ExtResource("1_fe0b2")
+region = Rect2(500, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gs2gv"]
+atlas = ExtResource("1_fe0b2")
+region = Rect2(1000, 0, 500, 500)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3mpfw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sgaqn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6ew0w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gs2gv")
+}],
+"loop": true,
+"name": &"move",
+"speed": 10.0
+}]
+
+[sub_resource type="Gradient" id="Gradient_lj6mc"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.336634, 0.722772)
+colors = PackedColorArray(1, 1, 1, 1, 0.556953, 0.556953, 0.556953, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_01au5"]
+gradient = SubResource("Gradient_lj6mc")
+width = 256
+height = 256
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 1)
+
+[node name="fire_ball" type="AnimatedSprite2D"]
+scale = Vector2(0.1, 0.1)
+sprite_frames = SubResource("SpriteFrames_3mpfw")
+animation = &"move"
+autoplay = "move"
+frame = 1
+frame_progress = 0.0585872
+script = ExtResource("2_malds")
+
+[node name="Attack_light" type="PointLight2D" parent="."]
+position = Vector2(70, -10)
+scale = Vector2(2, 2)
+texture = SubResource("GradientTexture2D_01au5")

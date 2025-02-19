@@ -1,34 +1,36 @@
-[gd_scene load_steps=7 format=3 uid="uid://c5jwvlk3fol5g"]
+[gd_scene load_steps=7 format=4 uid="uid://c5jwvlk3fol5g"]
 
 [ext_resource type="PackedScene" uid="uid://bcdxtwprt24cm" path="res://场景/地图/继承/level.tscn" id="1_s1ums"]
 [ext_resource type="Script" path="res://脚本/EntryPoint.gd" id="2_kkmlt"]
 [ext_resource type="PackedScene" uid="uid://d3pdj2pxxurb6" path="res://场景/人物/主角/player.tscn" id="2_nulvh"]
 [ext_resource type="PackedScene" uid="uid://yv21d5ap61pu" path="res://场景/小组件/摄像机/camera.tscn" id="4_1u83q"]
+[ext_resource type="PackedScene" uid="uid://cmlt5k61om75r" path="res://场景/小组件/门/door.tscn" id="4_853g0"]
 [ext_resource type="PackedScene" uid="uid://bgwduib0f5h5d" path="res://场景/小组件/留言板/textboard.tscn" id="5_n86dx"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_yknwc"]
-size = Vector2(1981, 20)
-
 [node name="Level_1" instance=ExtResource("1_s1ums")]
+
+[node name="TileMapLayer" parent="TileMap" index="0"]
+tile_map_data = PackedByteArray("AAD//w0AAAAKAAIAAAAAAA0AAAALAAIAAAAAAA4AAAALAAMAAAABAA0AAAAMAAIAAAABAA4AAAAMAAMAAAACAA0AAAANAAIAAAACAA4AAAANAAMAAAADAA0AAAAMAAIAAAADAA4AAAAMAAMAAAAEAA0AAAANAAIAAAAEAA4AAAANAAMAAAAFAA0AAAAMAAIAAAAFAA4AAAAMAAMAAAAGAA0AAAANAAIAAAAGAA4AAAANAAMAAAAHAA0AAAAMAAIAAAAHAA4AAAAMAAMAAAAIAA0AAAANAAIAAAAIAA4AAAANAAMAAAAJAA0AAAAMAAIAAAAJAA4AAAAMAAMAAAAKAA0AAAAMAAIAAAAKAA4AAAAMAAMAAAALAA0AAAANAAIAAAALAA4AAAANAAMAAAAMAA0AAAALAAIAAAAMAA4AAAALAAMAAAANAA0AAAAMAAIAAAANAA4AAAAMAAMAAAAOAA0AAAANAAIAAAAOAA4AAAANAAMAAAAPAA0AAAAOAAIAAAAPAA4AAAAOAAMAAAAQAA0AAAAPAAIAAAD//wwAAAAKAAEAAAAAAAwAAAALAAEAAAABAAwAAAAMAAEAAAACAAwAAAANAAEAAAADAAwAAAAMAAEAAAAEAAwAAAANAAEAAAAFAAwAAAAMAAEAAAAGAAwAAAANAAEAAAAHAAwAAAAMAAEAAAAIAAwAAAANAAEAAAAJAAwAAAAMAAEAAAAKAAwAAAAMAAEAAAALAAwAAAANAAEAAAAMAAwAAAALAAEAAAANAAwAAAAMAAEAAAAOAAwAAAANAAEAAAAPAAwAAAAOAAEAAAAQAAwAAAAPAAEAAAA=")
 
 [node name="EntryPoint" parent="." index="1"]
 position = Vector2(1197, -186)
 
-[node name="Entry1" type="Marker2D" parent="EntryPoint" index="0"]
-position = Vector2(-266, 1232)
+[node name="entry1" type="Marker2D" parent="EntryPoint" index="0"]
+position = Vector2(-278, 1224)
 script = ExtResource("2_kkmlt")
 
-[node name="Player" parent="." index="2" instance=ExtResource("2_nulvh")]
-position = Vector2(62, 1055)
+[node name="textboard" parent="." index="2" instance=ExtResource("5_n86dx")]
+position = Vector2(694, 1037)
+text = "level_1"
 
-[node name="StaticBody2D" type="StaticBody2D" parent="." index="3"]
-position = Vector2(19, 521)
+[node name="door" parent="." index="3" instance=ExtResource("4_853g0")]
+position = Vector2(918, 1033)
+path = "res://场景/地图/_main/main.tscn"
+entry_point = "entry1"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" index="0"]
-position = Vector2(978.5, 542)
-shape = SubResource("RectangleShape2D_yknwc")
+[node name="Player" parent="." index="4" instance=ExtResource("2_nulvh")]
+position = Vector2(60, 1023)
 
-[node name="Camera" parent="." index="4" instance=ExtResource("4_1u83q")]
-
-[node name="textboard" parent="." index="5" instance=ExtResource("5_n86dx")]
-position = Vector2(768, 1051)
+[node name="Camera" parent="." index="5" instance=ExtResource("4_1u83q")]
+position = Vector2(667, 1137)
+limit_bottom = 1080

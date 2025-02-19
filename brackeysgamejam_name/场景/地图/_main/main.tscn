@@ -1,16 +1,14 @@
-[gd_scene load_steps=21 format=3 uid="uid://diniirrj7ko4p"]
+[gd_scene load_steps=21 format=4 uid="uid://diniirrj7ko4p"]
 
 [ext_resource type="PackedScene" uid="uid://bcdxtwprt24cm" path="res://场景/地图/继承/level.tscn" id="1_qb0vt"]
 [ext_resource type="Script" path="res://场景/地图/_main/main.gd" id="2_2d852"]
 [ext_resource type="PackedScene" uid="uid://d3pdj2pxxurb6" path="res://场景/人物/主角/player.tscn" id="2_x3tw1"]
+[ext_resource type="AudioStream" uid="uid://bfm628p8x73av" path="res://_资源/3/BGM_1.mp3" id="3_5ub1b"]
+[ext_resource type="Script" path="res://脚本/EntryPoint.gd" id="3_elkxh"]
 [ext_resource type="Texture2D" uid="uid://kxv7ay2krw8x" path="res://_资源/测试/campfire.png" id="3_lpqem"]
-[ext_resource type="Texture2D" uid="uid://ske7om1ggl4f" path="res://_资源/2/_0004_waterway2.png" id="3_qeljq"]
 [ext_resource type="PackedScene" uid="uid://bgwduib0f5h5d" path="res://场景/小组件/留言板/textboard.tscn" id="4_j43x0"]
 [ext_resource type="PackedScene" uid="uid://cmlt5k61om75r" path="res://场景/小组件/门/door.tscn" id="5_hui5q"]
 [ext_resource type="PackedScene" uid="uid://yv21d5ap61pu" path="res://场景/小组件/摄像机/camera.tscn" id="8_yyvng"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_xiwv6"]
-size = Vector2(318, 65)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rb0fx"]
 atlas = ExtResource("3_lpqem")
@@ -91,158 +89,23 @@ fill_to = Vector2(1, 1)
 
 [node name="main" instance=ExtResource("1_qb0vt")]
 script = ExtResource("2_2d852")
+bgm = ExtResource("3_5ub1b")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="TileMap" index="1"]
-position = Vector2(-6, 21)
+[node name="TileMapLayer" parent="TileMap" index="0"]
+tile_map_data = PackedByteArray("AAACAAwAAAANAAEAAAACAA0AAAANAAIAAAADAAwAAAAMAAEAAAADAA0AAAAMAAIAAAADAA4AAAAMAAMAAAAEAAwAAAAMAAEAAAAEAA0AAAAMAAIAAAAEAA4AAAAMAAMAAAAFAAwAAAANAAEAAAAFAA0AAAANAAIAAAAFAA4AAAANAAMAAAAGAAwAAAAOAAEAAAAGAA0AAAAOAAIAAAAGAA4AAAAOAAMAAAAHAAwAAAAPAAEAAAAHAA0AAAAPAAIAAAAIAAwAAAAKAAEAAAAIAA0AAAAKAAIAAAAJAAwAAAALAAEAAAAJAA0AAAALAAIAAAAJAA4AAAALAAMAAAAKAAwAAAAMAAEAAAAKAA0AAAAMAAIAAAAKAA4AAAAMAAMAAAALAAwAAAANAAEAAAALAA0AAAANAAIAAAALAA4AAAANAAMAAAAMAAwAAAAOAAEAAAAMAA0AAAAOAAIAAAAMAA4AAAAOAAMAAAANAAwAAAAPAAEAAAANAA0AAAAPAAIAAAAOAAwAAAAKAAEAAAAOAA0AAAAKAAIAAAAPAAwAAAALAAEAAAAPAA0AAAALAAIAAAAPAA4AAAALAAMAAAAQAAwAAAAMAAEAAAAQAA0AAAAMAAIAAAAQAA4AAAAMAAMAAAARAAwAAAANAAEAAAARAA0AAAANAAIAAAARAA4AAAANAAMAAAASAAwAAAAOAAEAAAASAA0AAAAOAAIAAAASAA4AAAAOAAMAAAATAAwAAAAPAAEAAAATAA0AAAAPAAIAAAAAAAwAAAALAAEAAAAAAA0AAAALAAIAAAABAAwAAAAMAAEAAAABAA0AAAAMAAIAAAABAA4AAAAMAAMAAAACAA4AAAANAAMAAAD//wwAAAAKAAEAAAD//w0AAAAKAAIAAAAAAA4AAAALAAMAAAABAAoAAAABAAcAAAACAAoAAAACAAcAAAADAAoAAAADAAcAAAAEAAoAAAAEAAcAAAAFAAoAAAAFAAcAAAAGAAoAAAAGAAcAAAAHAAgAAAADAAwAAAAIAAgAAAAEAAwAAAAJAAgAAAAFAAwAAAAHAAUAAAADAAwAAAAIAAUAAAAEAAwAAAAJAAUAAAAFAAwAAAAHAAIAAAADAAwAAAAIAAIAAAAEAAwAAAAJAAIAAAAFAAwAAAAGAAAAAAAAAAIAAAAHAAAAAAABAAIAAAAIAAAAAAACAAIAAAAJAAAAAAADAAIAAAAKAAAAAAAEAAIAAAALAAAAAAAFAAIAAAAMAAAAAAAGAAIAAAANAAAAAAAHAAIAAAAOAAAAAAAIAAIAAAA=")
 
-[node name="0004Waterway2" type="Sprite2D" parent="TileMap/StaticBody2D" index="0"]
-position = Vector2(165, 1031)
-texture = ExtResource("3_qeljq")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/StaticBody2D" index="1"]
-position = Vector2(165, 1030.5)
-shape = SubResource("RectangleShape2D_xiwv6")
-
-[node name="StaticBody2D2" type="StaticBody2D" parent="TileMap" index="2"]
-position = Vector2(312, 21)
-
-[node name="0004Waterway2" type="Sprite2D" parent="TileMap/StaticBody2D2" index="0"]
-position = Vector2(165, 1031)
-texture = ExtResource("3_qeljq")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/StaticBody2D2" index="1"]
-position = Vector2(165, 1030.5)
-shape = SubResource("RectangleShape2D_xiwv6")
-
-[node name="StaticBody2D3" type="StaticBody2D" parent="TileMap" index="3"]
-position = Vector2(630, 21)
-
-[node name="0004Waterway2" type="Sprite2D" parent="TileMap/StaticBody2D3" index="0"]
-position = Vector2(165, 1031)
-texture = ExtResource("3_qeljq")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/StaticBody2D3" index="1"]
-position = Vector2(165, 1030.5)
-shape = SubResource("RectangleShape2D_xiwv6")
-
-[node name="StaticBody2D4" type="StaticBody2D" parent="TileMap" index="4"]
-position = Vector2(948, 21)
-
-[node name="0004Waterway2" type="Sprite2D" parent="TileMap/StaticBody2D4" index="0"]
-position = Vector2(165, 1031)
-texture = ExtResource("3_qeljq")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/StaticBody2D4" index="1"]
-position = Vector2(165, 1030.5)
-shape = SubResource("RectangleShape2D_xiwv6")
-
-[node name="StaticBody2D5" type="StaticBody2D" parent="TileMap" index="5"]
-position = Vector2(1266, 21)
-
-[node name="0004Waterway2" type="Sprite2D" parent="TileMap/StaticBody2D5" index="0"]
-position = Vector2(165, 1031)
-texture = ExtResource("3_qeljq")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/StaticBody2D5" index="1"]
-position = Vector2(165, 1030.5)
-shape = SubResource("RectangleShape2D_xiwv6")
-
-[node name="StaticBody2D6" type="StaticBody2D" parent="TileMap" index="6"]
-position = Vector2(1584, 21)
-
-[node name="0004Waterway2" type="Sprite2D" parent="TileMap/StaticBody2D6" index="0"]
-position = Vector2(165, 1031)
-texture = ExtResource("3_qeljq")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/StaticBody2D6" index="1"]
-position = Vector2(165, 1030.5)
-shape = SubResource("RectangleShape2D_xiwv6")
-
-[node name="StaticBody2D7" type="StaticBody2D" parent="TileMap" index="7"]
-position = Vector2(1893, 21)
-
-[node name="0004Waterway2" type="Sprite2D" parent="TileMap/StaticBody2D7" index="0"]
-position = Vector2(165, 1031)
-texture = ExtResource("3_qeljq")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/StaticBody2D7" index="1"]
-position = Vector2(165, 1030.5)
-shape = SubResource("RectangleShape2D_xiwv6")
-
-[node name="StaticBody2D8" type="StaticBody2D" parent="TileMap" index="8"]
-position = Vector2(-944, 21)
-
-[node name="0004Waterway2" type="Sprite2D" parent="TileMap/StaticBody2D8" index="0"]
-position = Vector2(165, 1031)
-texture = ExtResource("3_qeljq")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/StaticBody2D8" index="1"]
-position = Vector2(165, 1030.5)
-shape = SubResource("RectangleShape2D_xiwv6")
-
-[node name="StaticBody2D9" type="StaticBody2D" parent="TileMap" index="9"]
-position = Vector2(-626, 21)
-
-[node name="0004Waterway2" type="Sprite2D" parent="TileMap/StaticBody2D9" index="0"]
-position = Vector2(165, 1031)
-texture = ExtResource("3_qeljq")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/StaticBody2D9" index="1"]
-position = Vector2(165, 1030.5)
-shape = SubResource("RectangleShape2D_xiwv6")
-
-[node name="StaticBody2D10" type="StaticBody2D" parent="TileMap" index="10"]
-position = Vector2(-308, 21)
-
-[node name="0004Waterway2" type="Sprite2D" parent="TileMap/StaticBody2D10" index="0"]
-position = Vector2(165, 1031)
-texture = ExtResource("3_qeljq")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/StaticBody2D10" index="1"]
-position = Vector2(165, 1030.5)
-shape = SubResource("RectangleShape2D_xiwv6")
-
-[node name="StaticBody2D11" type="StaticBody2D" parent="TileMap" index="11"]
-position = Vector2(2184, 21)
-
-[node name="0004Waterway2" type="Sprite2D" parent="TileMap/StaticBody2D11" index="0"]
-position = Vector2(165, 1031)
-texture = ExtResource("3_qeljq")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/StaticBody2D11" index="1"]
-position = Vector2(165, 1030.5)
-shape = SubResource("RectangleShape2D_xiwv6")
-
-[node name="StaticBody2D12" type="StaticBody2D" parent="TileMap" index="12"]
-position = Vector2(2502, 21)
-
-[node name="0004Waterway2" type="Sprite2D" parent="TileMap/StaticBody2D12" index="0"]
-position = Vector2(165, 1031)
-texture = ExtResource("3_qeljq")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/StaticBody2D12" index="1"]
-position = Vector2(165, 1030.5)
-shape = SubResource("RectangleShape2D_xiwv6")
-
-[node name="StaticBody2D13" type="StaticBody2D" parent="TileMap" index="13"]
-position = Vector2(2820, 21)
-
-[node name="0004Waterway2" type="Sprite2D" parent="TileMap/StaticBody2D13" index="0"]
-position = Vector2(165, 1031)
-texture = ExtResource("3_qeljq")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/StaticBody2D13" index="1"]
-position = Vector2(165, 1030.5)
-shape = SubResource("RectangleShape2D_xiwv6")
+[node name="entry1" type="Marker2D" parent="EntryPoint" index="0"]
+position = Vector2(920, 1037)
+script = ExtResource("3_elkxh")
 
 [node name="door" parent="." index="2" instance=ExtResource("5_hui5q")]
-position = Vector2(529, 1016)
+position = Vector2(920, 1032)
 path = "res://场景/地图/1/level_1.tscn"
-entry_point = "entry1d"
+entry_point = "entry1"
 
 [node name="textboard" parent="." index="3" instance=ExtResource("4_j43x0")]
-position = Vector2(339, 1017)
-text = "你们好"
+position = Vector2(528, 1031)
+text = "AD-Move space-Jump S-platform down"
 
 [node name="Player" parent="." index="4" instance=ExtResource("2_x3tw1")]
 position = Vector2(122, 1018)
@@ -252,6 +115,9 @@ offset_left = 6.0
 offset_top = -348.0
 offset_right = 1975.0
 offset_bottom = -23.0
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
 theme_override_font_sizes/normal_font_size = 128
 bbcode_enabled = true
 text = "[wave][center]Dragoon Quest[/center][/wave]
@@ -281,6 +147,18 @@ autoplay = "default"
 frame_progress = 0.0900034
 
 [node name="PointLight2D" type="PointLight2D" parent="light/AnimatedSprite2D" index="0"]
+position = Vector2(0, 31)
+scale = Vector2(2, 2)
+texture = SubResource("GradientTexture2D_bg78g")
+height = 20.0
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="light" index="2"]
+position = Vector2(792, 984)
+sprite_frames = SubResource("SpriteFrames_0eu0y")
+autoplay = "default"
+frame_progress = 0.0900034
+
+[node name="PointLight2D" type="PointLight2D" parent="light/AnimatedSprite2D2" index="0"]
 position = Vector2(0, 31)
 scale = Vector2(2, 2)
 texture = SubResource("GradientTexture2D_bg78g")

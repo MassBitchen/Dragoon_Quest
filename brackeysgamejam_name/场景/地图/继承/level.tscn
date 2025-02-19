@@ -1,6 +1,110 @@
-[gd_scene load_steps=2 format=3 uid="uid://bcdxtwprt24cm"]
+[gd_scene load_steps=5 format=3 uid="uid://bcdxtwprt24cm"]
 
 [ext_resource type="Script" path="res://场景/地图/继承/level.gd" id="1_mhbgw"]
+[ext_resource type="Texture2D" uid="uid://c2iuahonw5tm1" path="res://_资源/2/平台（可穿透_不可穿透）.png" id="2_nfdxu"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_muagq"]
+texture = ExtResource("2_nfdxu")
+texture_region_size = Vector2i(80, 80)
+10:1/0 = 0
+11:1/0 = 0
+12:1/0 = 0
+13:1/0 = 0
+14:1/0 = 0
+15:1/0 = 0
+0:2/0 = 0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(0, -30, 40, -30, 40, -10, -10, -10)
+0:2/0/physics_layer_0/polygon_0/one_way = true
+1:2/0 = 0
+1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-40, -30, 40, -30, 40, -10, -40, -10)
+1:2/0/physics_layer_0/polygon_0/one_way = true
+2:2/0 = 0
+2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-40, -30, 40, -30, 40, -10, -40, -10)
+2:2/0/physics_layer_0/polygon_0/one_way = true
+3:2/0 = 0
+3:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-40, -30, 40, -30, 40, -10, -40, -10)
+3:2/0/physics_layer_0/polygon_0/one_way = true
+4:2/0 = 0
+4:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-40, -30, 40, -30, 40, -10, -40, -10)
+4:2/0/physics_layer_0/polygon_0/one_way = true
+5:2/0 = 0
+5:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-40, -30, 40, -30, 40, -10, -40, -10)
+5:2/0/physics_layer_0/polygon_0/one_way = true
+6:2/0 = 0
+6:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-40, -30, 40, -30, 40, -10, -40, -10)
+6:2/0/physics_layer_0/polygon_0/one_way = true
+7:2/0 = 0
+7:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-40, -30, 40, -30, 40, -10, -40, -10)
+7:2/0/physics_layer_0/polygon_0/one_way = true
+8:2/0 = 0
+8:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-40, -30, -30, -30, -10, -10, -40, -10)
+8:2/0/physics_layer_0/polygon_0/one_way = true
+10:2/0 = 0
+11:2/0 = 0
+11:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-40, 40, -40, -40, 40, -40, 40, 40)
+12:2/0 = 0
+12:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-40, 40, -40, -40, 40, -40, 40, 40)
+13:2/0 = 0
+13:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-40, 40, -40, -40, 40, -40, 40, 40)
+14:2/0 = 0
+14:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-40, 40, -40, -40, 40, -40, 40, 40)
+15:2/0 = 0
+11:3/0 = 0
+12:3/0 = 0
+13:3/0 = 0
+14:3/0 = 0
+11:6/0 = 0
+12:6/0 = 0
+13:6/0 = 0
+14:6/0 = 0
+1:7/0 = 0
+2:7/0 = 0
+2:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-30, -30, 40, -30, 40, -10, -40, -10)
+2:7/0/physics_layer_0/polygon_0/one_way = true
+3:7/0 = 0
+3:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-40, -30, 40, -30, 40, -10, -40, -10)
+3:7/0/physics_layer_0/polygon_0/one_way = true
+4:7/0 = 0
+4:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-40, -30, 40, -30, 40, -10, -40, -10)
+4:7/0/physics_layer_0/polygon_0/one_way = true
+5:7/0 = 0
+5:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-40, -30, 40, -30, 40, -10, -40, -10)
+5:7/0/physics_layer_0/polygon_0/one_way = true
+6:7/0 = 0
+6:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-40, -30, 0, -30, 20, -10, -40, -10)
+6:7/0/physics_layer_0/polygon_0/one_way = true
+11:7/0 = 0
+11:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(0, 40, 0, -40, 40, -40, 40, 40)
+12:7/0 = 0
+12:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-40, 40, -40, -40, 40, -40, 40, 40)
+13:7/0 = 0
+13:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-40, 40, -40, -40, 40, -40, 40, 40)
+14:7/0 = 0
+14:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-40, 40, -40, -40, -10, -40, -10, 40)
+11:8/0 = 0
+12:8/0 = 0
+13:8/0 = 0
+14:8/0 = 0
+12:11/0 = 0
+13:11/0 = 0
+3:12/0 = 0
+3:12/0/physics_layer_0/polygon_0/points = PackedVector2Array(0, -30, 40, -30, 40, -10, -10, -10)
+3:12/0/physics_layer_0/polygon_0/one_way = true
+4:12/0 = 0
+4:12/0/physics_layer_0/polygon_0/points = PackedVector2Array(-40, -30, 40, -30, 40, -10, -40, -10)
+4:12/0/physics_layer_0/polygon_0/one_way = true
+5:12/0 = 0
+5:12/0/physics_layer_0/polygon_0/points = PackedVector2Array(-40, -30, -30, -30, -10, -10, -40, -10)
+5:12/0/physics_layer_0/polygon_0/one_way = true
+12:12/0 = 0
+12:12/0/physics_layer_0/polygon_0/points = PackedVector2Array(-40, 40, -40, -40, 40, -40, 40, 40)
+13:12/0 = 0
+13:12/0/physics_layer_0/polygon_0/points = PackedVector2Array(-40, 40, -40, -40, 40, -40, 40, 40)
+
+[sub_resource type="TileSet" id="TileSet_yktno"]
+tile_size = Vector2i(80, 80)
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_muagq")
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_mhbgw")
@@ -8,5 +112,6 @@ script = ExtResource("1_mhbgw")
 [node name="TileMap" type="Node2D" parent="."]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="TileMap"]
+tile_set = SubResource("TileSet_yktno")
 
 [node name="EntryPoint" type="Node2D" parent="."]

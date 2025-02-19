@@ -1,10 +1,13 @@
-[gd_scene load_steps=20 format=3 uid="uid://d3pdj2pxxurb6"]
+[gd_scene load_steps=25 format=3 uid="uid://d3pdj2pxxurb6"]
 
 [ext_resource type="Script" path="res://脚本/StateMachine.gd" id="1_o6q0p"]
 [ext_resource type="Script" path="res://场景/人物/主角/player.gd" id="1_srj1n"]
 [ext_resource type="Texture2D" uid="uid://b06ao7meddcu0" path="res://_资源/1/Player.png" id="2_bd15t"]
 [ext_resource type="PackedScene" uid="uid://djw3htxsye74s" path="res://粒子/attack_gpu.tscn" id="3_d5pue"]
+[ext_resource type="Theme" uid="uid://t58gkoxkjkj3" path="res://_资源/GameTheme.tres" id="4_bbbp8"]
 [ext_resource type="PackedScene" uid="uid://bby16skaep1rl" path="res://场景/小组件/攻击箭头/arrow.tscn" id="4_cor5o"]
+[ext_resource type="PackedScene" uid="uid://dyw5oosxrh7r8" path="res://场景/人物/火球/attackbar_gpu.tscn" id="4_g2h05"]
+[ext_resource type="Texture2D" uid="uid://ed2p8xav76ig" path="res://_资源/4/UI_1.png" id="5_3dffk"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cdhr4"]
 atlas = ExtResource("2_bd15t")
@@ -28,13 +31,13 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="Gradient" id="Gradient_lj6mc"]
+[sub_resource type="Gradient" id="Gradient_wb0vu"]
 interpolation_mode = 2
 offsets = PackedFloat32Array(0, 0.336634, 0.722772)
 colors = PackedColorArray(1, 1, 1, 1, 0.556953, 0.556953, 0.556953, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_gsuin"]
-gradient = SubResource("Gradient_lj6mc")
+gradient = SubResource("Gradient_wb0vu")
 width = 256
 height = 256
 fill = 1
@@ -43,6 +46,14 @@ fill_to = Vector2(1, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x5jex"]
 size = Vector2(117, 174)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v8gwo"]
+atlas = ExtResource("5_3dffk")
+region = Rect2(2, 4, 92, 6)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oolrh"]
+atlas = ExtResource("5_3dffk")
+region = Rect2(2, 18, 92, 6)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g5m70"]
 size = Vector2(56, 157.5)
@@ -360,10 +371,16 @@ region_filter_clip_enabled = true
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_q6bty")
 animation = &"wink"
+frame = 1
+frame_progress = 1.0
 offset = Vector2(0, -161)
 
 [node name="Attack_GPU" parent="Body" instance=ExtResource("3_d5pue")]
 position = Vector2(63, -165)
+emitting = false
+
+[node name="Attack_GPU_2" parent="Body" instance=ExtResource("4_g2h05")]
+position = Vector2(-63, -146)
 emitting = false
 
 [node name="Attack_light" type="PointLight2D" parent="Body"]
@@ -382,6 +399,19 @@ shape = SubResource("RectangleShape2D_x5jex")
 
 [node name="attack_pos" type="Marker2D" parent="Body/Mark2D"]
 position = Vector2(62, -165)
+
+[node name="attack_bar" type="TextureProgressBar" parent="Body"]
+visible = false
+offset_left = -65.0
+offset_top = -57.0
+offset_right = 27.0
+offset_bottom = -51.0
+rotation = -1.5708
+theme = ExtResource("4_bbbp8")
+max_value = 1.0
+step = 0.0
+texture_over = SubResource("AtlasTexture_v8gwo")
+texture_progress = SubResource("AtlasTexture_oolrh")
 
 [node name="arrow" parent="." instance=ExtResource("4_cor5o")]
 visible = false

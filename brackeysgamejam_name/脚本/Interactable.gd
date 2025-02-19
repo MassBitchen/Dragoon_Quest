@@ -2,6 +2,8 @@ extends Area2D
 class_name Interactable
 
 signal interacted
+signal entry
+signal quit
 
 func _init() -> void:
 	collision_layer = 0
@@ -16,6 +18,8 @@ func interact() -> void:
 
 func _on_body_entered(player: Player) -> void:
 	player.register_interactable(self)
+	entry.emit()
 
 func _on_body_exited(player: Player) -> void:
 	player.unregister_interactable(self)
+	quit.emit()
