@@ -15,7 +15,11 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	var p2 = self.global_position
-	var p1 :Vector2 = PlayerPos
+	var p1 :Vector2
+	if Input.get_action_strength("attack"):
+		p1 = (PlayerPos + get_global_mouse_position())/2
+	else:
+		p1 = PlayerPos
 	p2 += (p1 - p2) * k
 	self.global_position = p2
 
