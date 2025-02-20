@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=4 uid="uid://diniirrj7ko4p"]
+[gd_scene load_steps=26 format=4 uid="uid://diniirrj7ko4p"]
 
 [ext_resource type="PackedScene" uid="uid://bcdxtwprt24cm" path="res://场景/地图/继承/level.tscn" id="1_qb0vt"]
 [ext_resource type="Script" path="res://场景/地图/_main/main.gd" id="2_2d852"]
@@ -7,8 +7,21 @@
 [ext_resource type="Script" path="res://脚本/EntryPoint.gd" id="3_elkxh"]
 [ext_resource type="Texture2D" uid="uid://kxv7ay2krw8x" path="res://_资源/测试/campfire.png" id="3_lpqem"]
 [ext_resource type="PackedScene" uid="uid://bgwduib0f5h5d" path="res://场景/小组件/留言板/textboard.tscn" id="4_j43x0"]
+[ext_resource type="Script" path="res://脚本/Playercheckbox.gd" id="5_8dke7"]
 [ext_resource type="PackedScene" uid="uid://cmlt5k61om75r" path="res://场景/小组件/门/door.tscn" id="5_hui5q"]
 [ext_resource type="PackedScene" uid="uid://yv21d5ap61pu" path="res://场景/小组件/摄像机/camera.tscn" id="8_yyvng"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_28l1q"]
+size = Vector2(1920, 1136)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_deg3n"]
+size = Vector2(1000, 264)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vkg3k"]
+size = Vector2(984, 240)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xetms"]
+size = Vector2(1268, 216)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rb0fx"]
 atlas = ExtResource("3_lpqem")
@@ -74,13 +87,13 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="Gradient" id="Gradient_asgrq"]
+[sub_resource type="Gradient" id="Gradient_i71ig"]
 interpolation_mode = 2
 offsets = PackedFloat32Array(0, 0.732673)
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_bg78g"]
-gradient = SubResource("Gradient_asgrq")
+gradient = SubResource("Gradient_i71ig")
 width = 624
 height = 624
 fill = 1
@@ -89,59 +102,83 @@ fill_to = Vector2(1, 1)
 
 [node name="main" instance=ExtResource("1_qb0vt")]
 script = ExtResource("2_2d852")
+text = "主 世 界"
 bgm = ExtResource("3_5ub1b")
 
 [node name="TileMapLayer" parent="TileMap" index="0"]
-tile_map_data = PackedByteArray("AAACAAwAAAANAAEAAAACAA0AAAANAAIAAAADAAwAAAAMAAEAAAADAA0AAAAMAAIAAAADAA4AAAAMAAMAAAAEAAwAAAAMAAEAAAAEAA0AAAAMAAIAAAAEAA4AAAAMAAMAAAAFAAwAAAANAAEAAAAFAA0AAAANAAIAAAAFAA4AAAANAAMAAAAGAAwAAAAOAAEAAAAGAA0AAAAOAAIAAAAGAA4AAAAOAAMAAAAHAAwAAAAPAAEAAAAHAA0AAAAPAAIAAAAIAAwAAAAKAAEAAAAIAA0AAAAKAAIAAAAJAAwAAAALAAEAAAAJAA0AAAALAAIAAAAJAA4AAAALAAMAAAAKAAwAAAAMAAEAAAAKAA0AAAAMAAIAAAAKAA4AAAAMAAMAAAALAAwAAAANAAEAAAALAA0AAAANAAIAAAALAA4AAAANAAMAAAAMAAwAAAAOAAEAAAAMAA0AAAAOAAIAAAAMAA4AAAAOAAMAAAANAAwAAAAPAAEAAAANAA0AAAAPAAIAAAAOAAwAAAAKAAEAAAAOAA0AAAAKAAIAAAAPAAwAAAALAAEAAAAPAA0AAAALAAIAAAAPAA4AAAALAAMAAAAQAAwAAAAMAAEAAAAQAA0AAAAMAAIAAAAQAA4AAAAMAAMAAAARAAwAAAANAAEAAAARAA0AAAANAAIAAAARAA4AAAANAAMAAAASAAwAAAAOAAEAAAASAA0AAAAOAAIAAAASAA4AAAAOAAMAAAATAAwAAAAPAAEAAAATAA0AAAAPAAIAAAAAAAwAAAALAAEAAAAAAA0AAAALAAIAAAABAAwAAAAMAAEAAAABAA0AAAAMAAIAAAABAA4AAAAMAAMAAAACAA4AAAANAAMAAAD//wwAAAAKAAEAAAD//w0AAAAKAAIAAAAAAA4AAAALAAMAAAABAAoAAAABAAcAAAACAAoAAAACAAcAAAADAAoAAAADAAcAAAAEAAoAAAAEAAcAAAAFAAoAAAAFAAcAAAAGAAoAAAAGAAcAAAAHAAgAAAADAAwAAAAIAAgAAAAEAAwAAAAJAAgAAAAFAAwAAAAHAAUAAAADAAwAAAAIAAUAAAAEAAwAAAAJAAUAAAAFAAwAAAAHAAIAAAADAAwAAAAIAAIAAAAEAAwAAAAJAAIAAAAFAAwAAAAGAAAAAAAAAAIAAAAHAAAAAAABAAIAAAAIAAAAAAACAAIAAAAJAAAAAAADAAIAAAAKAAAAAAAEAAIAAAALAAAAAAAFAAIAAAAMAAAAAAAGAAIAAAANAAAAAAAHAAIAAAAOAAAAAAAIAAIAAAA=")
+tile_map_data = PackedByteArray("AAD2/wgAAAAMAAcAAAD3/wgAAAANAAcAAAD2/wkAAAAMAAcAAAD3/wkAAAANAAcAAAD2/woAAAAMAAcAAAD3/woAAAANAAcAAAD2/wsAAAAMAAcAAAD3/wsAAAANAAcAAAD4/wgAAAAMAAcAAAD5/wgAAAANAAcAAAD4/wkAAAAMAAcAAAD5/wkAAAANAAcAAAD4/woAAAAMAAcAAAD5/woAAAANAAcAAAD4/wsAAAAMAAcAAAD5/wsAAAANAAcAAAD6/wgAAAAMAAcAAAD7/wgAAAANAAcAAAD6/wkAAAAMAAcAAAD7/wkAAAANAAcAAAD6/woAAAAMAAcAAAD7/woAAAANAAcAAAD6/wsAAAAMAAcAAAD7/wsAAAANAAcAAAD8/wgAAAAMAAcAAAD9/wgAAAANAAcAAAD8/wkAAAAMAAcAAAD9/wkAAAANAAcAAAD8/woAAAAMAAcAAAD9/woAAAANAAcAAAD8/wsAAAAMAAcAAAD9/wsAAAANAAcAAAD+/woAAAAMAAcAAAD+/wsAAAAMAAcAAAD2/wwAAAAMAAcAAAD3/wwAAAANAAcAAAD2/w0AAAAMAAcAAAD3/w0AAAANAAcAAAD2/w4AAAAMAAcAAAD3/w4AAAANAAcAAAD4/wwAAAAMAAcAAAD5/wwAAAANAAcAAAD4/w0AAAAMAAcAAAD5/w0AAAANAAcAAAD4/w4AAAAMAAcAAAD5/w4AAAANAAcAAAD6/wwAAAAMAAcAAAD7/wwAAAANAAcAAAD6/w0AAAAMAAcAAAD7/w0AAAANAAcAAAD6/w4AAAAMAAcAAAD7/w4AAAANAAcAAAD8/wwAAAAMAAcAAAD9/wwAAAANAAcAAAD8/w0AAAAMAAcAAAD9/w0AAAANAAcAAAD8/w4AAAAMAAcAAAD9/w4AAAANAAcAAAD+/wwAAAAMAAcAAAD+/w0AAAAMAAcAAAD+/w4AAAAMAAcAAAD+/wgAAAAOAAcAAAD+/wkAAAAOAAcAAAD//woAAAANAAcAAAAAAAoAAAAMAAcAAAD//wsAAAAMAAcAAAAAAAsAAAANAAcAAAD//wwAAAAMAAcAAAAAAAwAAAANAAcAAAD//w0AAAAMAAcAAAAAAA0AAAANAAcAAAD//w4AAAAMAAcAAAAAAA4AAAANAAcAAAABAAoAAAANAAcAAAACAAoAAAAOAAcAAAABAAsAAAAOAAcAAAABAAwAAAAMAAcAAAACAAwAAAANAAcAAAABAA0AAAAMAAcAAAACAA0AAAANAAcAAAABAA4AAAAMAAcAAAACAA4AAAANAAcAAAADAAwAAAAMAAcAAAAEAAwAAAANAAcAAAADAA0AAAAMAAcAAAAEAA0AAAANAAcAAAADAA4AAAAMAAcAAAAEAA4AAAANAAcAAAAFAAwAAAAOAAcAAAAFAA0AAAAMAAcAAAAFAA4AAAAMAAcAAAAGAA0AAAAMAAcAAAAHAA0AAAANAAcAAAAGAA4AAAAMAAcAAAAHAA4AAAANAAcAAAAIAA0AAAAMAAcAAAAIAA4AAAAMAAcAAAAGAAwAAAANAAYAAAAHAAwAAAAMAAYAAAAIAAwAAAANAAYAAAD//wkAAAANAAYAAAAAAAkAAAAMAAYAAAABAAkAAAANAAYAAAACAAkAAAAOAAYAAAADAAsAAAAMAAYAAAAEAAsAAAANAAYAAAAFAAsAAAAOAAYAAAACAAsAAAANAAYAAADp/wgAAAANAAcAAADp/wkAAAANAAcAAADp/woAAAANAAcAAADp/wsAAAANAAcAAADp/wwAAAANAAcAAADp/w0AAAANAAcAAADp/w4AAAANAAcAAADq/wgAAAAMAAcAAADr/wgAAAANAAcAAADq/wkAAAAMAAcAAADr/wkAAAANAAcAAADq/woAAAAMAAcAAADr/woAAAANAAcAAADq/wsAAAAMAAcAAADr/wsAAAANAAcAAADq/wwAAAAMAAcAAADr/wwAAAANAAcAAADq/w0AAAAMAAcAAADr/w0AAAANAAcAAADq/w4AAAAMAAcAAADr/w4AAAANAAcAAADs/wgAAAAMAAcAAADt/wgAAAANAAcAAADs/wkAAAAMAAcAAADt/wkAAAANAAcAAADs/woAAAAMAAcAAADt/woAAAANAAcAAADs/wsAAAAMAAcAAADt/wsAAAANAAcAAADs/wwAAAAMAAcAAADt/wwAAAANAAcAAADs/w0AAAAMAAcAAADt/w0AAAANAAcAAADs/w4AAAAMAAcAAADt/w4AAAANAAcAAADu/wgAAAAMAAcAAADv/wgAAAANAAcAAADu/wkAAAAMAAcAAADv/wkAAAANAAcAAADu/woAAAAMAAcAAADv/woAAAANAAcAAADu/wsAAAAMAAcAAADv/wsAAAANAAcAAADu/wwAAAAMAAcAAADv/wwAAAANAAcAAADu/w0AAAAMAAcAAADv/w0AAAANAAcAAADu/w4AAAAMAAcAAADv/w4AAAANAAcAAADw/wgAAAAMAAcAAADx/wgAAAANAAcAAADw/wkAAAAMAAcAAADx/wkAAAANAAcAAADw/woAAAAMAAcAAADx/woAAAANAAcAAADw/wsAAAAMAAcAAADx/wsAAAANAAcAAADw/wwAAAAMAAcAAADx/wwAAAANAAcAAADw/w0AAAAMAAcAAADx/w0AAAANAAcAAADw/w4AAAAMAAcAAADx/w4AAAANAAcAAADy/wgAAAAMAAcAAADz/wgAAAANAAcAAADy/wkAAAAMAAcAAADz/wkAAAANAAcAAADy/woAAAAMAAcAAADz/woAAAANAAcAAADy/wsAAAAMAAcAAADz/wsAAAANAAcAAADy/wwAAAAMAAcAAADz/wwAAAANAAcAAADy/w0AAAAMAAcAAADz/w0AAAANAAcAAADy/w4AAAAMAAcAAADz/w4AAAANAAcAAAD0/wgAAAAMAAcAAAD1/wgAAAANAAcAAAD0/wkAAAAMAAcAAAD1/wkAAAANAAcAAAD0/woAAAAMAAcAAAD1/woAAAANAAcAAAD0/wsAAAAMAAcAAAD1/wsAAAANAAcAAAD0/wwAAAAMAAcAAAD1/wwAAAANAAcAAAD0/w0AAAAMAAcAAAD1/w0AAAANAAcAAAD0/w4AAAAMAAcAAAD1/w4AAAANAAcAAADp//n/AAANAAcAAADp//r/AAANAAcAAADp//v/AAANAAcAAADp//z/AAAMAAcAAADp//3/AAAMAAcAAADp//7/AAAMAAcAAADp////AAAMAAcAAADp/wAAAAAMAAcAAADp/wEAAAAMAAcAAADp/wIAAAAMAAcAAADp/wMAAAAMAAcAAADp/wQAAAAMAAcAAADp/wUAAAAMAAcAAADp/wYAAAAMAAcAAADp/wcAAAAMAAcAAADl//n/AAANAAcAAADm//n/AAAMAAcAAADl//r/AAANAAcAAADm//r/AAAMAAcAAADl//v/AAANAAcAAADm//v/AAAMAAcAAADl//z/AAAMAAcAAADm//z/AAANAAcAAADl//3/AAAMAAcAAADm//3/AAANAAcAAADl//7/AAAMAAcAAADm//7/AAANAAcAAADl////AAAMAAcAAADm////AAANAAcAAADl/wAAAAAMAAcAAADm/wAAAAANAAcAAADl/wEAAAAMAAcAAADm/wEAAAANAAcAAADl/wIAAAAMAAcAAADm/wIAAAANAAcAAADl/wMAAAAMAAcAAADm/wMAAAANAAcAAADl/wQAAAAMAAcAAADm/wQAAAANAAcAAADl/wUAAAAMAAcAAADm/wUAAAANAAcAAADl/wYAAAAMAAcAAADm/wYAAAANAAcAAADl/wcAAAAMAAcAAADm/wcAAAANAAcAAADl/wgAAAAMAAcAAADm/wgAAAANAAcAAADl/wkAAAAMAAcAAADm/wkAAAANAAcAAADl/woAAAAMAAcAAADm/woAAAANAAcAAADl/wsAAAAMAAcAAADm/wsAAAANAAcAAADl/wwAAAAMAAcAAADm/wwAAAANAAcAAADl/w0AAAAMAAcAAADm/w0AAAANAAcAAADl/w4AAAAMAAcAAADm/w4AAAANAAcAAADn//n/AAANAAcAAADo//n/AAAMAAcAAADn//r/AAANAAcAAADo//r/AAAMAAcAAADn//v/AAANAAcAAADo//v/AAAMAAcAAADn//z/AAAMAAcAAADo//z/AAANAAcAAADn//3/AAAMAAcAAADo//3/AAANAAcAAADn//7/AAAMAAcAAADo//7/AAANAAcAAADn////AAAMAAcAAADo////AAANAAcAAADn/wAAAAAMAAcAAADo/wAAAAANAAcAAADn/wEAAAAMAAcAAADo/wEAAAANAAcAAADn/wIAAAAMAAcAAADo/wIAAAANAAcAAADn/wMAAAAMAAcAAADo/wMAAAANAAcAAADn/wQAAAAMAAcAAADo/wQAAAANAAcAAADn/wUAAAAMAAcAAADo/wUAAAANAAcAAADn/wYAAAAMAAcAAADo/wYAAAANAAcAAADn/wcAAAAMAAcAAADo/wcAAAANAAcAAADn/wgAAAAMAAcAAADo/wgAAAANAAcAAADn/wkAAAAMAAcAAADo/wkAAAANAAcAAADn/woAAAAMAAcAAADo/woAAAANAAcAAADn/wsAAAAMAAcAAADo/wsAAAANAAcAAADn/wwAAAAMAAcAAADo/wwAAAANAAcAAADn/w0AAAAMAAcAAADo/w0AAAANAAcAAADn/w4AAAAMAAcAAADo/w4AAAANAAcAAADl//f/AAANAAcAAADl//j/AAANAAcAAADm//f/AAAMAAcAAADn//f/AAANAAcAAADm//j/AAAMAAcAAADn//j/AAANAAcAAADo//f/AAAMAAcAAADp//f/AAANAAcAAADo//j/AAAMAAcAAADp//j/AAANAAcAAADq/wcAAAAMAAYAAADr/wcAAAANAAYAAADs/wcAAAAMAAYAAADt/wcAAAANAAYAAADu/wcAAAAMAAYAAADv/wcAAAANAAYAAADw/wcAAAAMAAYAAADx/wcAAAANAAYAAADy/wcAAAAMAAYAAADz/wcAAAANAAYAAAD0/wcAAAAMAAYAAAD1/wcAAAANAAYAAAD2/wcAAAAMAAYAAAD3/wcAAAANAAYAAAD4/wcAAAAMAAYAAAD5/wcAAAANAAYAAAD6/wcAAAAMAAYAAAD7/wcAAAANAAYAAAD8/wcAAAAMAAYAAAD9/wcAAAANAAYAAAD+/wcAAAAOAAYAAAAZAAwAAAAMAAYAAAAZAA0AAAAMAAcAAAAZAA4AAAAMAAcAAAAaAAwAAAANAAYAAAAaAA0AAAANAAcAAAAaAA4AAAANAAcAAAAbAAwAAAAMAAYAAAAbAA0AAAAMAAcAAAAbAA4AAAAMAAcAAAAcAAwAAAANAAYAAAAcAA0AAAANAAcAAAAcAA4AAAANAAcAAAAdAAwAAAANAAYAAAAdAA0AAAANAAcAAAAdAA4AAAANAAcAAAAeAAwAAAAMAAYAAAAeAA0AAAAMAAcAAAAeAA4AAAAMAAcAAAAfAAwAAAANAAYAAAAfAA0AAAANAAcAAAAfAA4AAAANAAcAAAAgAAwAAAAMAAYAAAAgAA0AAAAMAAcAAAAgAA4AAAAMAAcAAAAhAAwAAAANAAYAAAAhAA0AAAANAAcAAAAhAA4AAAANAAcAAAAiAAwAAAAMAAYAAAAiAA0AAAAMAAcAAAAiAA4AAAAMAAcAAAAjAAwAAAANAAYAAAAjAA0AAAANAAcAAAAjAA4AAAANAAcAAAAkAAwAAAAMAAYAAAAkAA0AAAAMAAcAAAAkAA4AAAAMAAcAAAAlAAwAAAANAAYAAAAlAA0AAAANAAcAAAAlAA4AAAANAAcAAAAmAAwAAAANAAYAAAAmAA0AAAANAAcAAAAmAA4AAAANAAwAAAAnAAwAAAAOAAYAAAAnAA0AAAAOAAcAAAAnAA4AAAAOAAgAAAAJAAwAAAAMAAYAAAAJAA0AAAANAAcAAAAJAA4AAAANAAcAAAAKAAwAAAANAAYAAAAKAA0AAAAMAAcAAAAKAA4AAAAMAAcAAAALAAwAAAAMAAYAAAALAA0AAAANAAcAAAALAA4AAAANAAcAAAAMAAwAAAAMAAYAAAAMAA0AAAAMAAcAAAAMAA4AAAAMAAcAAAANAAwAAAANAAYAAAANAA0AAAANAAcAAAANAA4AAAANAAcAAAAOAAwAAAAMAAYAAAAOAA0AAAAMAAcAAAAOAA4AAAAMAAcAAAAPAAwAAAANAAYAAAAPAA0AAAANAAcAAAAPAA4AAAANAAcAAAAQAAwAAAAMAAYAAAAQAA0AAAAMAAcAAAAQAA4AAAAMAAcAAAARAAwAAAANAAYAAAARAA0AAAANAAcAAAARAA4AAAANAAcAAAASAAwAAAAMAAYAAAASAA0AAAANAAcAAAASAA4AAAANAAcAAAATAAwAAAANAAYAAAATAA0AAAAMAAcAAAATAA4AAAAMAAcAAAAUAAwAAAAMAAYAAAAUAA0AAAANAAcAAAAUAA4AAAANAAcAAAAVAAwAAAAMAAYAAAAVAA0AAAAMAAcAAAAVAA4AAAAMAAcAAAAWAAwAAAANAAYAAAAWAA0AAAANAAcAAAAWAA4AAAANAAcAAAAXAAwAAAAMAAYAAAAXAA0AAAAMAAcAAAAXAA4AAAAMAAcAAAAYAAwAAAANAAYAAAAYAA0AAAANAAcAAAAYAA4AAAANAAcAAAASAAcAAAADAAwAAAASAAsAAAADAAwAAAATAAcAAAAEAAwAAAATAAsAAAAEAAwAAAAUAAcAAAAFAAwAAAAUAAsAAAAFAAwAAAAVAAUAAAAAAAIAAAAVAAkAAAAAAAIAAAAWAAUAAAABAAIAAAAWAAkAAAABAAIAAAAXAAUAAAACAAIAAAAXAAkAAAACAAIAAAAYAAUAAAADAAIAAAAYAAkAAAADAAIAAAAZAAUAAAAEAAIAAAAZAAkAAAAEAAIAAAAaAAUAAAAFAAIAAAAaAAkAAAAFAAIAAAAbAAUAAAAGAAIAAAAbAAkAAAAGAAIAAAAcAAUAAAAHAAIAAAAcAAkAAAAHAAIAAAAdAAUAAAAIAAIAAAAdAAkAAAAIAAIAAAA=")
 
 [node name="entry1" type="Marker2D" parent="EntryPoint" index="0"]
 position = Vector2(920, 1037)
 script = ExtResource("3_elkxh")
 
-[node name="door" parent="." index="2" instance=ExtResource("5_hui5q")]
+[node name="title_open" type="Area2D" parent="Area" index="0"]
+position = Vector2(192, 696)
+script = ExtResource("5_8dke7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area/title_open" index="0"]
+position = Vector2(840, -184)
+shape = SubResource("RectangleShape2D_28l1q")
+
+[node name="camera_area1" type="Area2D" parent="Area" index="1"]
+position = Vector2(2008, 621)
+script = ExtResource("5_8dke7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area/camera_area1" index="0"]
+position = Vector2(-132, -25)
+shape = SubResource("RectangleShape2D_deg3n")
+
+[node name="camera_area2" type="Area2D" parent="Area" index="2"]
+position = Vector2(1992, 288)
+script = ExtResource("5_8dke7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area/camera_area2" index="0"]
+position = Vector2(-113, -80)
+shape = SubResource("RectangleShape2D_vkg3k")
+
+[node name="Area2D" type="Area2D" parent="Area" index="3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area/Area2D" index="0"]
+position = Vector2(3488, 1480)
+shape = SubResource("RectangleShape2D_xetms")
+
+[node name="door" parent="Door" index="0" instance=ExtResource("5_hui5q")]
 position = Vector2(920, 1032)
 path = "res://场景/地图/1/level_1.tscn"
 entry_point = "entry1"
 
-[node name="textboard" parent="." index="3" instance=ExtResource("4_j43x0")]
-position = Vector2(528, 1031)
-text = "AD-Move space-Jump S-platform down"
+[node name="door2" parent="Door" index="1" instance=ExtResource("5_hui5q")]
+position = Vector2(1882, 1032)
+path = "res://场景/地图/1/level_1.tscn"
+entry_point = "entry1"
 
-[node name="Player" parent="." index="4" instance=ExtResource("2_x3tw1")]
-position = Vector2(122, 1018)
+[node name="door3" parent="Door" index="2" instance=ExtResource("5_hui5q")]
+position = Vector2(2192, 1032)
+path = "res://场景/地图/1/level_1.tscn"
+entry_point = "entry1"
 
-[node name="title" type="RichTextLabel" parent="." index="5"]
-offset_left = 6.0
-offset_top = -348.0
-offset_right = 1975.0
-offset_bottom = -23.0
-theme_override_colors/default_color = Color(1, 1, 1, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 12
-theme_override_font_sizes/normal_font_size = 128
-bbcode_enabled = true
-text = "[wave][center]Dragoon Quest[/center][/wave]
-[font_size=84][shake][center]What can go wrong[/center][shake]"
+[node name="door4" parent="Door" index="3" instance=ExtResource("5_hui5q")]
+position = Vector2(2192, 720)
+path = "res://场景/地图/1/level_1.tscn"
+entry_point = "entry1"
 
-[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="title" index="1"]
-position = Vector2(975, 199)
-sprite_frames = SubResource("SpriteFrames_0eu0y")
-autoplay = "default"
-frame_progress = 0.0900034
+[node name="door5" parent="Door" index="4" instance=ExtResource("5_hui5q")]
+position = Vector2(1880, 720)
+path = "res://场景/地图/1/level_1.tscn"
+entry_point = "entry1"
 
-[node name="PointLight2D" type="PointLight2D" parent="title/AnimatedSprite2D2" index="0"]
-position = Vector2(0, 31)
-scale = Vector2(2, 2)
-texture = SubResource("GradientTexture2D_bg78g")
-height = 20.0
+[node name="door6" parent="Door" index="5" instance=ExtResource("5_hui5q")]
+position = Vector2(1880, 400)
+path = "res://场景/地图/1/level_1.tscn"
+entry_point = "entry1"
 
-[node name="light" type="Node2D" parent="." index="6"]
-
-[node name="CanvasModulate" type="CanvasModulate" parent="light" index="0"]
-color = Color(0, 0, 0, 1)
+[node name="door7" parent="Door" index="6" instance=ExtResource("5_hui5q")]
+position = Vector2(2192, 400)
+path = "res://场景/地图/1/level_1.tscn"
+entry_point = "entry1"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="light" index="1"]
-position = Vector2(421, 977)
+position = Vector2(280, 912)
 sprite_frames = SubResource("SpriteFrames_0eu0y")
 autoplay = "default"
 frame_progress = 0.0900034
@@ -153,7 +190,7 @@ texture = SubResource("GradientTexture2D_bg78g")
 height = 20.0
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="light" index="2"]
-position = Vector2(792, 984)
+position = Vector2(1248, 975)
 sprite_frames = SubResource("SpriteFrames_0eu0y")
 autoplay = "default"
 frame_progress = 0.0900034
@@ -164,5 +201,73 @@ scale = Vector2(2, 2)
 texture = SubResource("GradientTexture2D_bg78g")
 height = 20.0
 
-[node name="Camera" parent="." index="7" instance=ExtResource("8_yyvng")]
+[node name="AnimatedSprite2D4" type="AnimatedSprite2D" parent="light" index="3"]
+position = Vector2(2768, 989)
+sprite_frames = SubResource("SpriteFrames_0eu0y")
+autoplay = "default"
+frame_progress = 0.0900034
+
+[node name="PointLight2D" type="PointLight2D" parent="light/AnimatedSprite2D4" index="0"]
+position = Vector2(0, 31)
+scale = Vector2(2, 2)
+texture = SubResource("GradientTexture2D_bg78g")
+height = 20.0
+
+[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="light" index="4"]
+position = Vector2(2008, 672)
+sprite_frames = SubResource("SpriteFrames_0eu0y")
+autoplay = "default"
+frame_progress = 0.0900034
+
+[node name="PointLight2D" type="PointLight2D" parent="light/AnimatedSprite2D3" index="0"]
+position = Vector2(0, 31)
+scale = Vector2(2, 2)
+texture = SubResource("GradientTexture2D_bg78g")
+height = 20.0
+
+[node name="title" type="RichTextLabel" parent="." index="6"]
+modulate = Color(1, 1, 1, 0)
+offset_left = -312.0
+offset_top = 200.0
+offset_right = 1657.0
+offset_bottom = 525.0
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_font_sizes/normal_font_size = 128
+bbcode_enabled = true
+text = "[wave][center]Dragoon Quest[/center][/wave]
+[font_size=84][shake][center]What can go wrong[/center][shake]"
+
+[node name="PointLight2D" type="PointLight2D" parent="title" index="1"]
+position = Vector2(664, 152)
+scale = Vector2(2, 2)
+texture = SubResource("GradientTexture2D_bg78g")
+height = 20.0
+
+[node name="PointLight2D2" type="PointLight2D" parent="title" index="2"]
+position = Vector2(1728, 152)
+scale = Vector2(2, 2)
+texture = SubResource("GradientTexture2D_bg78g")
+height = 20.0
+
+[node name="textboard" parent="." index="7" instance=ExtResource("4_j43x0")]
+position = Vector2(376, 952)
+text = "AD-Move"
+
+[node name="textboard2" parent="." index="8" instance=ExtResource("4_j43x0")]
+position = Vector2(1128, 1041)
+text = "往前走跳下去体验END"
+
+[node name="Player" parent="." index="9" instance=ExtResource("2_x3tw1")]
+position = Vector2(-1552, 576)
+
+[node name="Camera" parent="." index="10" instance=ExtResource("8_yyvng")]
+position = Vector2(-928, 432)
+limit_left = -2000
 limit_bottom = 1080
+
+[connection signal="Ischeck" from="Area/title_open" to="." method="_on_title_open_ischeck"]
+[connection signal="Ischeck" from="Area/camera_area1" to="." method="_on_camera_area_1_ischeck"]
+[connection signal="Ischeck" from="Area/camera_area2" to="." method="_on_camera_area_2_ischeck"]
+[connection signal="area_entered" from="Area/Area2D" to="." method="_on_area_2d_area_entered"]

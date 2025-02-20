@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bdtcw2tsdhgu6"]
+[gd_scene load_steps=10 format=3 uid="uid://bdtcw2tsdhgu6"]
 
 [ext_resource type="Texture2D" uid="uid://4ko02lyg8nr6" path="res://_资源/1/火球.png" id="1_fe0b2"]
 [ext_resource type="Script" path="res://场景/人物/火球/fire_ball.gd" id="2_malds"]
@@ -32,29 +32,45 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="Gradient" id="Gradient_lj6mc"]
+[sub_resource type="Gradient" id="Gradient_cqe7l"]
 interpolation_mode = 2
 offsets = PackedFloat32Array(0, 0.336634, 0.722772)
 colors = PackedColorArray(1, 1, 1, 1, 0.556953, 0.556953, 0.556953, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_01au5"]
-gradient = SubResource("Gradient_lj6mc")
+gradient = SubResource("Gradient_cqe7l")
 width = 256
 height = 256
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(1, 1)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_63ebd"]
+radius = 80.6226
+
 [node name="fire_ball" type="AnimatedSprite2D"]
+position = Vector2(-9.53674e-07, 0)
 scale = Vector2(0.1, 0.1)
 sprite_frames = SubResource("SpriteFrames_3mpfw")
 animation = &"move"
 autoplay = "move"
-frame = 1
-frame_progress = 0.0585872
+frame_progress = 0.273228
+offset = Vector2(-80, 0)
 script = ExtResource("2_malds")
 
 [node name="Attack_light" type="PointLight2D" parent="."]
-position = Vector2(70, -10)
+position = Vector2(1.52588e-05, -9.53674e-07)
 scale = Vector2(2, 2)
+energy = 0.5
 texture = SubResource("GradientTexture2D_01au5")
+
+[node name="fire_ball" type="Area2D" parent="."]
+position = Vector2(-80, 0)
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="fire_ball"]
+position = Vector2(80, 0)
+shape = SubResource("CircleShape2D_63ebd")
+
+[connection signal="area_entered" from="fire_ball" to="." method="_on_fire_ball_area_entered"]

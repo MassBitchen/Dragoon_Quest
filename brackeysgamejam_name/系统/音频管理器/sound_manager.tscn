@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://pmcncgwc708q"]
+[gd_scene load_steps=9 format=3 uid="uid://pmcncgwc708q"]
 
 [ext_resource type="Script" path="res://系统/音频管理器/sound_manager.gd" id="1_vgxw0"]
 [ext_resource type="AudioStream" uid="uid://dwrgu1hkblrit" path="res://_资源/3/run_1.wav" id="2_q3ixe"]
@@ -7,6 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://c6v2x0s1qr3lp" path="res://_资源/3/door_open.mp3" id="5_6k322"]
 [ext_resource type="AudioStream" uid="uid://cd1osoj00g1yy" path="res://_资源/3/fireball.wav" id="5_fmjtt"]
 [ext_resource type="AudioStream" uid="uid://b4blxw5bke04l" path="res://_资源/3/door_close.mp3" id="6_r3h5w"]
+[ext_resource type="AudioStream" uid="uid://jkeeug6it4i1" path="res://_资源/3/mirrror.wav" id="8_kvgoa"]
 
 [node name="SoundManager" type="Node"]
 script = ExtResource("1_vgxw0")
@@ -42,6 +43,11 @@ stream = ExtResource("6_r3h5w")
 bus = &"SFX"
 
 [node name="textboard" type="AudioStreamPlayer" parent="SFX"]
+bus = &"SFX"
+
+[node name="mirror" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("8_kvgoa")
+volume_db = -10.0
 bus = &"SFX"
 
 [node name="BGMPlayer" type="AudioStreamPlayer" parent="."]

@@ -46,7 +46,7 @@ var default_gravity := ProjectSettings.get("physics/2d/default_gravity") * 2 as 
 #玩家位置
 var PlayerPosition :Vector2 = Vector2.ZERO
 #实例场景
-var BULLET = load("res://场景/人物/火球/fire_ball.tscn")
+var BULLET = load("res://场景/人物/火球/fireball.tscn")
 #预处理
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("jump"):
@@ -97,6 +97,8 @@ func get_next_state(state: State) -> int:
 				return State.RUN
 			if Input.get_action_strength("attack"):
 				return State.ATTACK
+			if velocity.y > 0:
+				return State.FALL
 		State.RUN:
 			if H_is_still:
 				return State.IDLE
@@ -137,6 +139,7 @@ func transition_state(from: State, to: State) -> void:
 		attack_light.enabled = false
 		arrow.visible = false
 		attack_bar.visible = false
+		player_eye.visible = true
 		attack_bar.value = 0
 	match to:
 		State.IDLE:
@@ -164,6 +167,7 @@ func transition_state(from: State, to: State) -> void:
 			attack_light.enabled = true
 			arrow.visible = true
 			attack_bar.visible = true
+			player_eye.visible = false
 #移动方法---
 func Player_move(gravity: float, delta: float, rate: float) -> void:
 	#返回一个+-1
@@ -189,10 +193,11 @@ func Player_Attack() -> void:
 	play_sfx("fireball")
 	var bullet = BULLET.instantiate()
 	bullet.global_position = attack_pos.global_position
-	bullet.free_time = 5
-	bullet.Speed = 1000
+	bullet.free_time = 20
+	#bullet.Speed = 1000
 	var mouse_direction = (get_global_mouse_position() - attack_pos.global_position).normalized()
-	bullet.ShootPos = mouse_direction
+	#bullet.ShootPos = mouse_direction
+	bullet.velocity = mouse_direction * RUN_SPEED * 4
 	get_parent().add_child(bullet)
 #非移动方法---
 #交互进入

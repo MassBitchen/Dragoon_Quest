@@ -2,6 +2,7 @@ extends Camera2D
 
 @export var recovery_speed := 16.0
 @export var k :float = 0.02
+@export var p :Vector2 = Vector2(9,-400)
 
 var strength := 0.0
 var PlayerPos :Vector2
@@ -19,7 +20,7 @@ func _process(delta: float) -> void:
 	if Input.get_action_strength("attack"):
 		p1 = (PlayerPos + get_global_mouse_position())/2
 	else:
-		p1 = PlayerPos
+		p1 = PlayerPos + p
 	p2 += (p1 - p2) * k
 	self.global_position = p2
 

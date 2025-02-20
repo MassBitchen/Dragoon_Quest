@@ -1,0 +1,71 @@
+[gd_scene load_steps=10 format=3 uid="uid://clingu3xsm0t"]
+
+[ext_resource type="Script" path="res://场景/人物/火球/fireball.gd" id="1_7pm5w"]
+[ext_resource type="Texture2D" uid="uid://4ko02lyg8nr6" path="res://_资源/1/火球.png" id="1_pu12w"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q34g4"]
+atlas = ExtResource("1_pu12w")
+region = Rect2(0, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p3hjd"]
+atlas = ExtResource("1_pu12w")
+region = Rect2(500, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_epexs"]
+atlas = ExtResource("1_pu12w")
+region = Rect2(1000, 0, 500, 500)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tcx8p"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q34g4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p3hjd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_epexs")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 10.0
+}]
+
+[sub_resource type="Gradient" id="Gradient_lj6mc"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.336634, 0.722772)
+colors = PackedColorArray(1, 1, 1, 1, 0.556953, 0.556953, 0.556953, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_guylj"]
+gradient = SubResource("Gradient_lj6mc")
+width = 256
+height = 256
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 1)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6k66x"]
+radius = 64.0078
+
+[node name="fireball" type="CharacterBody2D"]
+scale = Vector2(0.1, 0.1)
+collision_layer = 0
+collision_mask = 8
+script = ExtResource("1_7pm5w")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_tcx8p")
+animation = &"attack"
+autoplay = "attack"
+frame_progress = 0.718394
+offset = Vector2(-98, -4)
+
+[node name="Attack_light" type="PointLight2D" parent="."]
+position = Vector2(1.52588e-05, -9.53674e-07)
+scale = Vector2(2, 2)
+energy = 0.5
+texture = SubResource("GradientTexture2D_guylj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_6k66x")

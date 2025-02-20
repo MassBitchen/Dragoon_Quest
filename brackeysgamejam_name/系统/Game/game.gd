@@ -1,6 +1,7 @@
 extends CanvasLayer
 #组件
 @onready var color_rect: ColorRect = $ColorRect
+@onready var level_name: Label = $level_name
 #信号
 signal camera_should_shake(amount: float)
 #玩家位置信号
@@ -15,14 +16,14 @@ func shake_camera(amount: float) -> void:
 	camera_should_shake.emit(amount)
 #场景变化
 func change_scene(path: String, params := {}) -> void:
-	var duration := params.get("duration", 0.2) as float
+	var duration := params.get("duration", 0.6) as float
 	
 	var tree := get_tree()
 	tree.paused = true
 	
 	var tween := create_tween()
 	tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
-	tween.tween_property(color_rect, "color:a", 1, duration)
+	tween.tween_property(color_rect, "color:a", 1, duration/2)
 	await tween.finished
 	
 	#场景保存相关
@@ -49,5 +50,11 @@ func change_scene(path: String, params := {}) -> void:
 	
 	tween = create_tween()
 	tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
-	tween.tween_property(color_rect, "color:a", 0, duration)
-	
+	tween.tween_property(color_rect, "color:a", 0, duration*2)
+
+func play_level_name(text: String) -> void:
+	level_name.text = text
+	var tween := create_tween()
+	tween.tween_property(level_name, "modulate", Color(1,1,1,1), 0.4)
+	tween.tween_property(level_name, "modulate", Color(1,1,1,1), 1)
+	tween.tween_property(level_name, "modulate", Color(1,1,1,0), 0.4)

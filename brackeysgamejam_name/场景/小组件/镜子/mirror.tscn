@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://cqxhslko35blr"]
+
+[ext_resource type="Texture2D" uid="uid://ft50b4a8b484" path="res://_资源/2/零件x4.png" id="1_m6deb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2cujd"]
+size = Vector2(218, 30)
+
+[node name="mirror" type="StaticBody2D"]
+collision_layer = 8
+collision_mask = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 0.0622786
+scale = Vector2(1, 1)
+texture = ExtResource("1_m6deb")
+region_enabled = true
+region_rect = Rect2(1355, 76, 89, 245)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 0)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_2cujd")
+debug_color = Color(0.983879, 0.000234686, 0.847088, 0.337255)

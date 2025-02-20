@@ -11,9 +11,11 @@ config_version=5
 [application]
 
 config/name="BrackeysGameJam_name"
-run/main_scene="res://场景/地图/_main/main.tscn"
+run/main_scene="res://场景/地图/_start/start.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
-config/icon="res://_资源/icon.svg"
+boot_splash/bg_color=Color(0, 0, 0, 1)
+boot_splash/show_image=false
+config/icon="res://_资源/icon.png"
 
 [audio]
 
@@ -77,3 +79,7 @@ move_down={
 2d_physics/layer_1="EN"
 2d_physics/layer_2="PL"
 2d_physics/layer_3="EN"
+
+[rendering]
+
+environment/defaults/default_clear_color=Color(0.00412971, 0.00713518, 0.0557841, 1)

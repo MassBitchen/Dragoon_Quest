@@ -1,0 +1,81 @@
+[gd_scene load_steps=15 format=3 uid="uid://bt2jnavkadbar"]
+
+[ext_resource type="Texture2D" uid="uid://cqycdvxooon04" path="res://_资源/red.png" id="1_cpb2n"]
+
+[sub_resource type="Gradient" id="Gradient_268oj"]
+colors = PackedColorArray(1, 1, 1, 0.501961, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_p6n5a"]
+gradient = SubResource("Gradient_268oj")
+
+[sub_resource type="Gradient" id="Gradient_qm2f3"]
+offsets = PackedFloat32Array(0.00738007, 0.601476)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_17mig"]
+gradient = SubResource("Gradient_qm2f3")
+
+[sub_resource type="Curve" id="Curve_17c0b"]
+_data = [Vector2(0, 0.562584), 0.0, 0.0, 0, 0, Vector2(0.494983, 0.982503), 0.0, 0.0, 0, 0, Vector2(1, 0.536339), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_trtpc"]
+_data = [Vector2(0, 0.510094), 0.0, 0.0, 0, 0, Vector2(0.481605, 0.991252), 0.0, 0.0, 0, 0, Vector2(1, 0.641319), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_6xuk5"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_imjj5"]
+curve_x = SubResource("Curve_17c0b")
+curve_y = SubResource("Curve_trtpc")
+curve_z = SubResource("Curve_6xuk5")
+
+[sub_resource type="Curve" id="Curve_5i5ls"]
+max_value = 3.0
+_data = [Vector2(0.0100335, 1.63526), 0.0, 0.0, 0, 0, Vector2(0.989967, 1.26783), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_o00jn"]
+max_value = 3.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.494983, 3), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_7hhsx"]
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_qyous"]
+curve_x = SubResource("Curve_5i5ls")
+curve_y = SubResource("Curve_o00jn")
+curve_z = SubResource("Curve_7hhsx")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ec6w0"]
+particle_flag_disable_z = true
+angle_min = -720.0
+angle_max = 720.0
+direction = Vector3(-1, 0, 0)
+spread = 180.0
+initial_velocity_min = 417.92
+initial_velocity_max = 483.58
+gravity = Vector3(0, 98, 0)
+linear_accel_min = -100.0
+linear_accel_max = -2.23517e-06
+radial_accel_min = -100.0
+radial_accel_max = -100.0
+scale_min = 1.5
+scale_max = 2.6
+scale_curve = SubResource("CurveXYZTexture_imjj5")
+scale_over_velocity_curve = SubResource("CurveXYZTexture_qyous")
+color = Color(1, 0, 0.027451, 1)
+color_ramp = SubResource("GradientTexture1D_17mig")
+color_initial_ramp = SubResource("GradientTexture1D_p6n5a")
+
+[node name="firebal_GPU" type="GPUParticles2D"]
+emitting = false
+amount = 50
+process_material = SubResource("ParticleProcessMaterial_ec6w0")
+texture = ExtResource("1_cpb2n")
+lifetime = 5.0
+one_shot = true
+speed_scale = 2.0
+explosiveness = 1.0

@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://bgwduib0f5h5d"]
+[gd_scene load_steps=8 format=3 uid="uid://bgwduib0f5h5d"]
 
 [ext_resource type="Script" path="res://场景/小组件/留言板/textboard.gd" id="1_djuyp"]
+[ext_resource type="Texture2D" uid="uid://ft50b4a8b484" path="res://_资源/2/零件x4.png" id="2_txlgm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n5mok"]
-size = Vector2(78, 156)
+size = Vector2(96, 91)
 
 [sub_resource type="Animation" id="Animation_6g0sv"]
 length = 0.001
@@ -43,11 +44,47 @@ tracks/2/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 0)]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("body/Sprite2D2:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("body/Sprite2D2:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -62)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("body/Sprite2D2:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
 
-[sub_resource type="Animation" id="Animation_udg62"]
+[sub_resource type="Animation" id="Animation_ea6ix"]
 resource_name = "close"
 length = 0.2
-step = 0.1
+step = 0.01
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -58,7 +95,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(1, 0.5),
 "update": 0,
-"values": [Vector2(-200, -225), Vector2(-20, -50)]
+"values": [Vector2(-83, -237), Vector2(-8, -70)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -84,11 +121,47 @@ tracks/2/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("body/Sprite2D2:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.5, 0.5), Vector2(1e-05, 1e-05)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("body/Sprite2D2:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -187), Vector2(0, -62)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("body/Sprite2D2:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_c48ka"]
 resource_name = "open"
 length = 0.2
-step = 0.1
+step = 0.01
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -99,7 +172,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(0.5, 1),
 "update": 0,
-"values": [Vector2(-20, -50), Vector2(-200, -225)]
+"values": [Vector2(-8, -70), Vector2(-83, -237)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -125,11 +198,47 @@ tracks/2/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("body/Sprite2D2:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(0.5, 0.5)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("body/Sprite2D2:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -62), Vector2(0, -187)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("body/Sprite2D2:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_a5t55"]
 _data = {
 "RESET": SubResource("Animation_6g0sv"),
-"close": SubResource("Animation_udg62"),
+"close": SubResource("Animation_ea6ix"),
 "open": SubResource("Animation_c48ka")
 }
 
@@ -139,21 +248,22 @@ script = ExtResource("1_djuyp")
 [node name="body" type="Node2D" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="body"]
+position = Vector2(12, -64)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_txlgm")
+offset = Vector2(-24, 38)
+region_enabled = true
+region_rect = Rect2(525, 117, 143, 200)
 
-[node name="ColorRect" type="ColorRect" parent="body"]
-offset_left = -12.0
-offset_top = -86.0
-offset_right = 9.0
-offset_bottom = -1.0
-
-[node name="ColorRect2" type="ColorRect" parent="body"]
-offset_left = -41.0
-offset_top = -158.0
-offset_right = 37.0
-offset_bottom = -84.0
+[node name="Sprite2D2" type="Sprite2D" parent="body"]
+position = Vector2(0, -62)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("2_txlgm")
+region_enabled = true
+region_rect = Rect2(17, 77, 367, 258)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-2, -79)
+position = Vector2(0, -46.5)
 shape = SubResource("RectangleShape2D_n5mok")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -163,15 +273,14 @@ libraries = {
 
 [node name="textLabel" type="Label" parent="."]
 modulate = Color(1, 1, 1, 0)
-z_index = 1
-offset_left = -200.0
-offset_top = -225.0
-offset_right = 201.0
-offset_bottom = -177.0
+offset_left = -82.9996
+offset_top = -236.999
+offset_right = 82.0004
+offset_bottom = -151.999
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 6
-theme_override_font_sizes/font_size = 36
+theme_override_font_sizes/font_size = 24
 text = "你好"
 horizontal_alignment = 1
 vertical_alignment = 1
