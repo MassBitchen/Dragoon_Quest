@@ -67,5 +67,6 @@ func Enemy_move(delta: float) -> void:
 
 
 func _on_hurtbox_hurt(hitbox: Variant) -> void:
+	Game.shake_camera(7)
 	get_parent().get_parent().enemy_num -= 1
 	queue_free()
