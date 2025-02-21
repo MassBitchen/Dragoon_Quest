@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://bqdooa0bx5pau"]
+
+[ext_resource type="Texture2D" uid="uid://c2iuahonw5tm1" path="res://_资源/2/平台（可穿透_不可穿透）.png" id="1_jikwy"]
+[ext_resource type="Script" path="res://脚本/Hurtbox.gd" id="2_ftsiy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nyjtj"]
+size = Vector2(326, 56)
+
+[node name="floor1" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_jikwy")
+offset = Vector2(-10, -2)
+region_enabled = true
+region_rect = Rect2(859, 146, 360, 99)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-10, 11)
+shape = SubResource("RectangleShape2D_nyjtj")
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 32
+collision_mask = 0
+script = ExtResource("2_ftsiy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(-10, 11)
+shape = SubResource("RectangleShape2D_nyjtj")

@@ -6,11 +6,29 @@ extends CanvasLayer
 signal camera_should_shake(amount: float)
 #玩家位置信号
 signal player_position_update()
+#重开逻辑信号
+signal should_reopen()
+
+var door2 :bool = false
+var door3 :bool = false
+var door4 :bool = false
+var door5 :bool = false
+var door6 :bool = false
+var door7 :bool = false
+
+@onready var options: CanvasLayer = $options
 
 var world_states := {}	
 
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("esc") and not options.visible:
+		options.show()
+
 func _ready() -> void:
 	color_rect.color.a = 0
+	options.visibility_changed.connect(func ():
+		get_tree().paused = options.visible
+	)
 #摇相机
 func shake_camera(amount: float) -> void:
 	camera_should_shake.emit(amount)
@@ -25,6 +43,7 @@ func change_scene(path: String, params := {}) -> void:
 	tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
 	tween.tween_property(color_rect, "color:a", 1, duration/2)
 	await tween.finished
+	Engine.time_scale = 1
 	
 	#场景保存相关
 	if tree.current_scene is World:
@@ -58,3 +77,17 @@ func play_level_name(text: String) -> void:
 	tween.tween_property(level_name, "modulate", Color(1,1,1,1), 0.4)
 	tween.tween_property(level_name, "modulate", Color(1,1,1,1), 1)
 	tween.tween_property(level_name, "modulate", Color(1,1,1,0), 0.4)
+
+
+func _on_reopen_pressed() -> void:
+	options.hide()
+	emit_signal("should_reopen")
+
+
+func _on_back_pressed() -> void:
+	options.hide()
+
+
+func _on_main_pressed() -> void:
+	options.hide()
+	change_scene("res://场景/地图/_main/main.tscn",{entry_point = "entry1"})

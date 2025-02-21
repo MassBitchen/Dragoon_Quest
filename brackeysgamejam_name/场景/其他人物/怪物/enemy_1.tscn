@@ -1,0 +1,135 @@
+[gd_scene load_steps=13 format=3 uid="uid://dlpfyj1qune1n"]
+
+[ext_resource type="Script" path="res://场景/其他人物/怪物/enemy_1.gd" id="1_bgfit"]
+[ext_resource type="Script" path="res://脚本/Hitbox.gd" id="1_i0l7w"]
+[ext_resource type="Texture2D" uid="uid://cnuaqhmlf812j" path="res://_资源/1/怪.png" id="2_korbm"]
+[ext_resource type="Script" path="res://脚本/Hurtbox.gd" id="2_unpwn"]
+[ext_resource type="Script" path="res://脚本/StateMachine.gd" id="3_sr7a1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v2nyw"]
+size = Vector2(186, 202)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1tuay"]
+radius = 69.0
+height = 184.0
+
+[sub_resource type="Animation" id="Animation_3j5q2"]
+resource_name = "idle"
+
+[sub_resource type="Animation" id="Animation_l04s5"]
+resource_name = "run"
+length = 0.4
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("body/Sprite2D:hframes")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("body/Sprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_ecqcc"]
+resource_name = "die"
+
+[sub_resource type="Animation" id="Animation_y70v4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("body/Sprite2D:hframes")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("body/Sprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pn1xj"]
+_data = {
+"RESET": SubResource("Animation_y70v4"),
+"die": SubResource("Animation_ecqcc"),
+"idle": SubResource("Animation_3j5q2"),
+"run": SubResource("Animation_l04s5")
+}
+
+[node name="Enemy1" type="CharacterBody2D"]
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+script = ExtResource("1_bgfit")
+
+[node name="body" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="body"]
+texture = ExtResource("2_korbm")
+hframes = 4
+
+[node name="Hitbox" type="Area2D" parent="body"]
+collision_layer = 0
+collision_mask = 16
+script = ExtResource("1_i0l7w")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="body/Hitbox"]
+position = Vector2(-2, -9)
+shape = SubResource("RectangleShape2D_v2nyw")
+
+[node name="Hurtbox" type="Area2D" parent="body"]
+collision_layer = 32
+collision_mask = 0
+script = ExtResource("2_unpwn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="body/Hurtbox"]
+position = Vector2(-2, -9)
+shape = SubResource("RectangleShape2D_v2nyw")
+
+[node name="floorcheck" type="RayCast2D" parent="body"]
+position = Vector2(-122, 87)
+
+[node name="wallcheck" type="RayCast2D" parent="body"]
+position = Vector2(-35, 26)
+target_position = Vector2(-98, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-3, 3)
+shape = SubResource("CapsuleShape2D_1tuay")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_pn1xj")
+}
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource("3_sr7a1")
+
+[connection signal="hurt" from="body/Hurtbox" to="." method="_on_hurtbox_hurt"]

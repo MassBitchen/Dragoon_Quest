@@ -13,6 +13,7 @@ func _ready() -> void:
 		strength += amount
 	)
 	Game.connect("player_position_update", Callable(self,"_on_player_position_update"))
+	Game.connect("should_reopen", Callable(self , "_on_should_reopen"))
 
 func _process(delta: float) -> void:
 	var p2 = self.global_position
@@ -30,5 +31,9 @@ func _process(delta: float) -> void:
 	)
 	strength = move_toward(strength, 0, recovery_speed * delta)
 
+#信号
 func _on_player_position_update(PlayerPosition):
 	PlayerPos = PlayerPosition
+
+func _on_should_reopen() -> void:
+	pass

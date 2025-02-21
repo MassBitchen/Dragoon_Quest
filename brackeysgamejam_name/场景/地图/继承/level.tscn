@@ -41,13 +41,13 @@ texture_region_size = Vector2i(80, 80)
 8:2/0/physics_layer_0/polygon_0/one_way = true
 10:2/0 = 0
 11:2/0 = 0
-11:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-40, 40, -40, -40, 40, -40, 40, 40)
+11:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-40, -10, 40, -10, 40, 40, -40, 40)
 12:2/0 = 0
-12:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-40, 40, -40, -40, 40, -40, 40, 40)
+12:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-40, -10, 40, -10, 40, 40, -40, 40)
 13:2/0 = 0
-13:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-40, 40, -40, -40, 40, -40, 40, 40)
+13:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-40, -10, 40, -10, 40, 40, -40, 40)
 14:2/0 = 0
-14:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-40, 40, -40, -40, 40, -40, 40, 40)
+14:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-40, -10, 40, -10, 40, 40, -40, 40)
 15:2/0 = 0
 11:3/0 = 0
 12:3/0 = 0
@@ -74,13 +74,13 @@ texture_region_size = Vector2i(80, 80)
 6:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-40, -30, 0, -30, 20, -10, -40, -10)
 6:7/0/physics_layer_0/polygon_0/one_way = true
 11:7/0 = 0
-11:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(0, 40, 0, -40, 40, -40, 40, 40)
+11:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(0, -10, 40, -10, 40, 40, 0, 40)
 12:7/0 = 0
-12:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-40, 40, -40, -40, 40, -40, 40, 40)
+12:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-40, -10, 40, -10, 40, 40, -40, 40)
 13:7/0 = 0
-13:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-40, 40, -40, -40, 40, -40, 40, 40)
+13:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-40, -10, 40, -10, 40, 40, -40, 40)
 14:7/0 = 0
-14:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-40, 40, -40, -40, -10, -40, -10, 40)
+14:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-40, -10, 0, -10, 0, 40, -40, 40)
 11:8/0 = 0
 12:8/0 = 0
 13:8/0 = 0
@@ -97,13 +97,14 @@ texture_region_size = Vector2i(80, 80)
 5:12/0/physics_layer_0/polygon_0/points = PackedVector2Array(-40, -30, -30, -30, -10, -10, -40, -10)
 5:12/0/physics_layer_0/polygon_0/one_way = true
 12:12/0 = 0
-12:12/0/physics_layer_0/polygon_0/points = PackedVector2Array(-40, 40, -40, -40, 40, -40, 40, 40)
+12:12/0/physics_layer_0/polygon_0/points = PackedVector2Array(-20, -10, 40, -10, 40, 20, -20, 20)
 13:12/0 = 0
-13:12/0/physics_layer_0/polygon_0/points = PackedVector2Array(-40, 40, -40, -40, 40, -40, 40, 40)
+13:12/0/physics_layer_0/polygon_0/points = PackedVector2Array(-40, -10, 20, -10, 20, 20, -40, 20)
 
 [sub_resource type="TileSet" id="TileSet_yktno"]
 tile_size = Vector2i(80, 80)
-physics_layer_0/collision_layer = 1
+physics_layer_0/collision_layer = 33
+physics_layer_0/collision_mask = 0
 sources/0 = SubResource("TileSetAtlasSource_muagq")
 
 [node name="Level" type="Node2D"]
@@ -126,3 +127,5 @@ tile_set = SubResource("TileSet_yktno")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="light"]
 color = Color(0, 0, 0, 1)
+
+[node name="role" type="Node2D" parent="."]

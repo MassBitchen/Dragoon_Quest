@@ -20,6 +20,13 @@ texture = ExtResource("2_xkyap")
 region_enabled = true
 region_rect = Rect2(904, 157, 294, 385)
 
+[node name="Sprite2D2" type="Sprite2D" parent="body"]
+position = Vector2(0, -91)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_xkyap")
+region_enabled = true
+region_rect = Rect2(1597, 152, 305, 397)
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, -88.75)
 shape = SubResource("RectangleShape2D_xav1b")

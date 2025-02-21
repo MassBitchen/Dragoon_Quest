@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://cj0gctse0pcy0"]
+[gd_scene load_steps=4 format=3 uid="uid://cj0gctse0pcy0"]
 
 [ext_resource type="Script" path="res://系统/Game/game.gd" id="1_hi6ew"]
+[ext_resource type="PackedScene" uid="uid://dxx5ugdvsdq2v" path="res://场景/UI/音量滑块/音量滑块.tscn" id="2_a6j02"]
+[ext_resource type="Script" path="res://系统/Game/options.gd" id="2_v1qux"]
 
 [node name="Game" type="CanvasLayer"]
 script = ExtResource("1_hi6ew")
@@ -33,3 +35,117 @@ theme_override_constants/outline_size = 6
 theme_override_font_sizes/font_size = 48
 text = "镜 子"
 horizontal_alignment = 1
+
+[node name="options" type="CanvasLayer" parent="."]
+process_mode = 2
+visible = false
+script = ExtResource("2_v1qux")
+
+[node name="ColorRect" type="ColorRect" parent="options"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="options"]
+offset_right = 1978.0
+offset_bottom = 206.0
+theme_override_font_sizes/normal_font_size = 128
+bbcode_enabled = true
+text = "[wave][center]options"
+
+[node name="Master" type="Label" parent="options"]
+offset_left = 606.0
+offset_top = 214.0
+offset_right = 798.0
+offset_bottom = 262.0
+theme_override_font_sizes/font_size = 48
+text = "Master"
+
+[node name="HSlider" parent="options" instance=ExtResource("2_a6j02")]
+offset_left = 1028.0
+offset_top = 233.0
+offset_right = 1481.0
+offset_bottom = 249.0
+
+[node name="BGM" type="Label" parent="options"]
+offset_left = 606.0
+offset_top = 289.0
+offset_right = 798.0
+offset_bottom = 337.0
+theme_override_font_sizes/font_size = 48
+text = "BGM"
+
+[node name="HSlider2" parent="options" instance=ExtResource("2_a6j02")]
+offset_left = 1028.0
+offset_top = 302.0
+offset_right = 1481.0
+offset_bottom = 318.0
+bus = &"BGM"
+
+[node name="SFX" type="Label" parent="options"]
+offset_left = 606.0
+offset_top = 358.0
+offset_right = 798.0
+offset_bottom = 406.0
+theme_override_font_sizes/font_size = 48
+text = "SFX
+"
+
+[node name="HSlider3" parent="options" instance=ExtResource("2_a6j02")]
+offset_left = 1028.0
+offset_top = 369.0
+offset_right = 1481.0
+offset_bottom = 385.0
+bus = &"SFX"
+
+[node name="reopen" type="Button" parent="options"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -124.0
+offset_top = 248.0
+offset_right = 124.0
+offset_bottom = 304.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 48
+text = "reopen"
+
+[node name="back" type="Button" parent="options"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -124.0
+offset_top = 148.0
+offset_right = 124.0
+offset_bottom = 204.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 48
+text = "back"
+
+[node name="main" type="Button" parent="options"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -124.0
+offset_top = 337.0
+offset_right = 124.0
+offset_bottom = 393.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 48
+text = "back to main"
+
+[connection signal="pressed" from="options/reopen" to="." method="_on_reopen_pressed"]
+[connection signal="pressed" from="options/back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="options/main" to="." method="_on_main_pressed"]

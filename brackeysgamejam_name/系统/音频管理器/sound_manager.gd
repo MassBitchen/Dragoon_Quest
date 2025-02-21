@@ -27,3 +27,7 @@ func stop_bgm(stream: AudioStream) -> void:
 		return
 	bgm_player.stream = stream
 	bgm_player.stop()
+
+func set_volume(bus_index: int, v: float) -> void:
+	var db := linear_to_db(v)
+	AudioServer.set_bus_volume_db(bus_index, db)

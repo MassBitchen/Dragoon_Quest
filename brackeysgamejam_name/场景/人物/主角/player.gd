@@ -47,6 +47,7 @@ var default_gravity := ProjectSettings.get("physics/2d/default_gravity") * 2 as 
 var PlayerPosition :Vector2 = Vector2.ZERO
 #实例场景
 var BULLET = load("res://场景/人物/火球/fireball.tscn")
+var reopen_path
 #预处理
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("jump"):
@@ -217,3 +218,6 @@ func play_sfx(name: String) -> void:
 func _on_wink_timer_timeout() -> void:
 	player_eye.play("wink")
 	wink_timer.wait_time = randf_range(3, 6)
+#受伤
+func _on_hurtbox_hurt(hitbox: Variant) -> void:
+	Game.change_scene(reopen_path, {entry_point = "entry1"})

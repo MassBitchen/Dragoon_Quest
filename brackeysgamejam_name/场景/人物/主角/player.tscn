@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://d3pdj2pxxurb6"]
+[gd_scene load_steps=28 format=3 uid="uid://d3pdj2pxxurb6"]
 
 [ext_resource type="Script" path="res://脚本/StateMachine.gd" id="1_o6q0p"]
 [ext_resource type="Script" path="res://场景/人物/主角/player.gd" id="1_srj1n"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bby16skaep1rl" path="res://场景/小组件/攻击箭头/arrow.tscn" id="4_cor5o"]
 [ext_resource type="PackedScene" uid="uid://dyw5oosxrh7r8" path="res://粒子/attackbar_gpu.tscn" id="4_g2h05"]
 [ext_resource type="Texture2D" uid="uid://ed2p8xav76ig" path="res://_资源/4/UI_1.png" id="5_3dffk"]
+[ext_resource type="Script" path="res://脚本/Hurtbox.gd" id="5_jcfqb"]
 [ext_resource type="Texture2D" uid="uid://bhogwj5vqbl8v" path="res://_资源/1/Player_2.png" id="8_8d0ev"]
 
 [sub_resource type="Gradient" id="Gradient_wb0vu"]
@@ -47,6 +48,9 @@ animations = [{
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x5jex"]
 size = Vector2(117, 174)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y2dkk"]
+size = Vector2(38, 161)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_v8gwo"]
 atlas = ExtResource("5_3dffk")
@@ -611,6 +615,16 @@ shape = SubResource("RectangleShape2D_x5jex")
 [node name="attack_pos" type="Marker2D" parent="Body/Mark2D"]
 position = Vector2(62, -165)
 
+[node name="Hurtbox" type="Area2D" parent="Body"]
+collision_layer = 16
+collision_mask = 0
+script = ExtResource("5_jcfqb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Body/Hurtbox"]
+position = Vector2(1, -76.5)
+shape = SubResource("RectangleShape2D_y2dkk")
+debug_color = Color(0.99263, 0, 0.24932, 0.42)
+
 [node name="attack_bar" type="TextureProgressBar" parent="Body"]
 visible = false
 offset_left = -65.0
@@ -667,4 +681,5 @@ text = "交互"
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource("1_o6q0p")
 
+[connection signal="hurt" from="Body/Hurtbox" to="." method="_on_hurtbox_hurt"]
 [connection signal="timeout" from="Timer/WinkTimer" to="." method="_on_wink_timer_timeout"]

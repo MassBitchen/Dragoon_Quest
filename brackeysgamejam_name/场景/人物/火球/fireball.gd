@@ -40,3 +40,17 @@ func _physics_process(delta: float) -> void:
 		tween.tween_property(self, "scale", Vector2(0.3,0.3), 0.1)
 		tween.tween_property(self, "scale", Vector2(0.5,0.5), 0.1)
 		
+
+func _on_hitbox_hit(hurtbox: Variant) -> void:
+	var GPU = gpu.instantiate()
+	GPU.global_position = self.global_position
+	GPU.emitting = true
+	get_parent().add_child(GPU)
+	queue_free()
+
+func _on_hitbox_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
+	var GPU = gpu.instantiate()
+	GPU.global_position = self.global_position
+	GPU.emitting = true
+	get_parent().add_child(GPU)
+	queue_free()

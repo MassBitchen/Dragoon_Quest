@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://clingu3xsm0t"]
+[gd_scene load_steps=12 format=3 uid="uid://clingu3xsm0t"]
 
 [ext_resource type="Script" path="res://场景/人物/火球/fireball.gd" id="1_7pm5w"]
 [ext_resource type="Texture2D" uid="uid://4ko02lyg8nr6" path="res://_资源/1/火球.png" id="1_pu12w"]
+[ext_resource type="Script" path="res://脚本/Hitbox.gd" id="3_3hrjv"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_q34g4"]
 atlas = ExtResource("1_pu12w")
@@ -48,6 +49,9 @@ fill_to = Vector2(1, 1)
 [sub_resource type="CircleShape2D" id="CircleShape2D_6k66x"]
 radius = 64.0078
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_ejtud"]
+radius = 60.8276
+
 [node name="fireball" type="CharacterBody2D"]
 scale = Vector2(0.1, 0.1)
 collision_layer = 0
@@ -69,3 +73,15 @@ texture = SubResource("GradientTexture2D_guylj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_6k66x")
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 32
+script = ExtResource("3_3hrjv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("CircleShape2D_ejtud")
+
+[connection signal="area_shape_entered" from="Hitbox" to="." method="_on_hitbox_area_shape_entered"]
+[connection signal="body_shape_entered" from="Hitbox" to="." method="_on_hitbox_body_shape_entered"]
+[connection signal="hit" from="Hitbox" to="." method="_on_hitbox_hit"]
