@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://c5jwvlk3fol5g"]
+[gd_scene load_steps=18 format=3 uid="uid://c5jwvlk3fol5g"]
 
 [ext_resource type="PackedScene" uid="uid://bcdxtwprt24cm" path="res://场景/地图/继承/level.tscn" id="1_s1ums"]
 [ext_resource type="Script" path="res://脚本/EntryPoint.gd" id="2_kkmlt"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://bgwduib0f5h5d" path="res://场景/小组件/留言板/textboard.tscn" id="5_n86dx"]
 [ext_resource type="Texture2D" uid="uid://dj48op77tphp5" path="res://_资源/场景1/底5（前景）.png" id="6_aieli"]
 [ext_resource type="PackedScene" uid="uid://douwj6xpqrvo1" path="res://场景/地板/floor_1.tscn" id="7_73gyn"]
+[ext_resource type="Texture2D" uid="uid://ft50b4a8b484" path="res://_资源/2/零件x4.png" id="7_vwuqc"]
 [ext_resource type="PackedScene" uid="uid://cqxhslko35blr" path="res://场景/小组件/镜子/mirror.tscn" id="13_xldd2"]
 
 [sub_resource type="Animation" id="Animation_oey36"]
@@ -155,19 +156,19 @@ position = Vector2(0, -64)
 motion_scale = Vector2(0.3, 0.3)
 
 [node name="底1" type="Sprite2D" parent="BG/4" index="0"]
-position = Vector2(965, 539)
+position = Vector2(965, 554.3)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("5_44khr")
 region_enabled = true
 region_rect = Rect2(0, 0, 2808, 1118)
 
 [node name="底2" type="Sprite2D" parent="BG/4" index="1"]
-position = Vector2(2928, 542)
+position = Vector2(2928, 557.3)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("5_44khr")
 
 [node name="底3" type="Sprite2D" parent="BG/4" index="2"]
-position = Vector2(-998, 536)
+position = Vector2(-998, 551.3)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("5_44khr")
 region_enabled = true
@@ -178,31 +179,94 @@ position = Vector2(0, -168)
 motion_scale = Vector2(0.5, 1)
 
 [node name="底1" type="Sprite2D" parent="BG/5" index="0"]
-position = Vector2(805, 265)
+position = Vector2(805, 309)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("6_aieli")
 
 [node name="底2" type="Sprite2D" parent="BG/5" index="1"]
-position = Vector2(2427, 265)
+position = Vector2(2427, 309)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("6_aieli")
 
 [node name="底3" type="Sprite2D" parent="BG/5" index="2"]
-position = Vector2(-817, 265)
+position = Vector2(-817, 309)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("6_aieli")
+
+[node name="花环" type="Sprite2D" parent="BG/5" index="3"]
+position = Vector2(-1338.05, -67)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("7_vwuqc")
+region_enabled = true
+region_rect = Rect2(875, 95, 237, 221)
+
+[node name="花环2" type="Sprite2D" parent="BG/5" index="4"]
+position = Vector2(-793.05, -67)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("7_vwuqc")
+region_enabled = true
+region_rect = Rect2(875, 95, 237, 221)
+
+[node name="花环3" type="Sprite2D" parent="BG/5" index="5"]
+position = Vector2(-272.05, -67)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("7_vwuqc")
+region_enabled = true
+region_rect = Rect2(875, 95, 237, 221)
+
+[node name="花环4" type="Sprite2D" parent="BG/5" index="6"]
+position = Vector2(287.9, -67)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("7_vwuqc")
+region_enabled = true
+region_rect = Rect2(875, 95, 237, 221)
+
+[node name="花环5" type="Sprite2D" parent="BG/5" index="7"]
+position = Vector2(832.9, -67)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("7_vwuqc")
+region_enabled = true
+region_rect = Rect2(875, 95, 237, 221)
+
+[node name="花环6" type="Sprite2D" parent="BG/5" index="8"]
+position = Vector2(1353.9, -67)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("7_vwuqc")
+region_enabled = true
+region_rect = Rect2(875, 95, 237, 221)
+
+[node name="花环7" type="Sprite2D" parent="BG/5" index="9"]
+position = Vector2(1908.9, -67)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("7_vwuqc")
+region_enabled = true
+region_rect = Rect2(875, 95, 237, 221)
+
+[node name="花环8" type="Sprite2D" parent="BG/5" index="10"]
+position = Vector2(2453.9, -67)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("7_vwuqc")
+region_enabled = true
+region_rect = Rect2(875, 95, 237, 221)
+
+[node name="花环9" type="Sprite2D" parent="BG/5" index="11"]
+position = Vector2(2974.9, -67)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("7_vwuqc")
+region_enabled = true
+region_rect = Rect2(875, 95, 237, 221)
 
 [node name="floor" type="Node2D" parent="TileMap" index="1"]
 position = Vector2(-932, 520)
 
 [node name="floor1" parent="TileMap/floor" index="0" instance=ExtResource("7_73gyn")]
-position = Vector2(0, 40)
+position = Vector2(0, 87)
 
 [node name="floor2" parent="TileMap/floor" index="1" instance=ExtResource("7_73gyn")]
-position = Vector2(899, 40)
+position = Vector2(899, 87)
 
 [node name="floor3" parent="TileMap/floor" index="2" instance=ExtResource("7_73gyn")]
-position = Vector2(1804, 40)
+position = Vector2(1804, 87)
 
 [node name="EntryPoint" parent="." index="3"]
 position = Vector2(1197, -186)
@@ -212,7 +276,7 @@ position = Vector2(-1615, 739)
 script = ExtResource("2_kkmlt")
 
 [node name="door" parent="Door" index="0" instance=ExtResource("4_853g0")]
-position = Vector2(-418, 547)
+position = Vector2(-418, 570)
 path = "res://场景/地图/_main/main.tscn"
 entry_point = "entry1"
 
@@ -220,22 +284,23 @@ entry_point = "entry1"
 color = Color(1, 1, 1, 1)
 
 [node name="textboard" parent="." index="7" instance=ExtResource("5_n86dx")]
-position = Vector2(-52, 553)
+position = Vector2(-52, 576)
 text = "Attack---hold the mouse"
 
 [node name="Player" parent="." index="8" instance=ExtResource("2_nulvh")]
 position = Vector2(-750, 548)
 
 [node name="Camera" parent="." index="9" instance=ExtResource("4_1u83q")]
-position = Vector2(-2360, 2553)
+position = Vector2(-38, 2108)
 limit_left = -1600
+limit_top = -360
 limit_bottom = 700
 p = Vector2(0, -364)
 
 [node name="mirror" parent="." index="10" instance=ExtResource("13_xldd2")]
-position = Vector2(442, 42)
+position = Vector2(442, 69)
 rotation = 1.40324
 
 [node name="mirror2" parent="." index="11" instance=ExtResource("13_xldd2")]
-position = Vector2(728, 554)
+position = Vector2(728, 581)
 rotation = 1.57681
