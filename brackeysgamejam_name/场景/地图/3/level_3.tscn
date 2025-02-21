@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bhxoi88e4kpar"]
+[gd_scene load_steps=15 format=3 uid="uid://bhxoi88e4kpar"]
 
 [ext_resource type="PackedScene" uid="uid://bcdxtwprt24cm" path="res://场景/地图/继承/level.tscn" id="1_jkjbw"]
 [ext_resource type="Script" path="res://场景/地图/3/level_3.gd" id="2_6qlcp"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://cmlt5k61om75r" path="res://场景/小组件/门/door.tscn" id="11_6pq1g"]
 [ext_resource type="PackedScene" uid="uid://d3pdj2pxxurb6" path="res://场景/人物/主角/player.tscn" id="12_veuc3"]
 [ext_resource type="PackedScene" uid="uid://yv21d5ap61pu" path="res://场景/小组件/摄像机/camera.tscn" id="13_8kjev"]
+[ext_resource type="PackedScene" uid="uid://cros1wmrfuxpj" path="res://场景/小组件/移动平台/move_platform.tscn" id="14_82eii"]
 
 [node name="Level_3" instance=ExtResource("1_jkjbw")]
 script = ExtResource("2_6qlcp")
@@ -194,3 +195,15 @@ limit_left = -1600
 limit_top = -360
 limit_bottom = 700
 p = Vector2(0, -364)
+
+[node name="move_platform" parent="." index="9" instance=ExtResource("14_82eii")]
+position = Vector2(593, 398)
+rate = 0.1
+
+[node name="move_platform2" parent="." index="10" instance=ExtResource("14_82eii")]
+position = Vector2(355, 367)
+rate = 0.1
+
+[node name="move_platform3" parent="." index="11" instance=ExtResource("14_82eii")]
+position = Vector2(161, 330)
+rate = 0.1
