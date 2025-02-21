@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://douwj6xpqrvo1"]
+
+[ext_resource type="Texture2D" uid="uid://cxe03efilp838" path="res://_资源/场景1/底6（地砖）.png" id="1_e0gcu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h221k"]
+size = Vector2(906, 91)
+
+[node name="floor1" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_e0gcu")
+offset = Vector2(81, -327)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(10, 36.5)
+shape = SubResource("RectangleShape2D_h221k")

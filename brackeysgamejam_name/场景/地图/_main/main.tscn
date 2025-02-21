@@ -256,8 +256,8 @@ position = Vector2(376, 952)
 text = "AD-Move"
 
 [node name="textboard2" parent="." index="8" instance=ExtResource("4_j43x0")]
-position = Vector2(1128, 1041)
-text = "往前走跳下去体验END"
+position = Vector2(736, 1041)
+text = "interrect: E"
 
 [node name="Player" parent="." index="9" instance=ExtResource("2_x3tw1")]
 position = Vector2(-1552, 576)

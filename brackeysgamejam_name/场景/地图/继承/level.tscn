@@ -109,7 +109,7 @@ sources/0 = SubResource("TileSetAtlasSource_muagq")
 [node name="Level" type="Node2D"]
 script = ExtResource("1_mhbgw")
 
-[node name="BG" type="Node2D" parent="."]
+[node name="BG" type="ParallaxBackground" parent="."]
 
 [node name="TileMap" type="Node2D" parent="."]
 
