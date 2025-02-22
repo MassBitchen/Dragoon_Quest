@@ -253,7 +253,7 @@ size = Vector2(5756, 138)
 
 [node name="Level_2" instance=ExtResource("1_8bgvu")]
 script = ExtResource("2_oiqr7")
-text = "镜 子"
+text = "The Mirror "
 self_path = "res://场景/地图/2/level_2.tscn"
 enemy_num = 3
 

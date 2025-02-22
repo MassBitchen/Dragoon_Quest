@@ -124,7 +124,7 @@ shader_parameter/seed = 6.0
 
 [node name="Level_5" instance=ExtResource("1_uk2gk")]
 script = ExtResource("2_gjp23")
-text = "5"
+text = "Friendly Faces"
 self_path = "res://场景/地图/5/level_5.tscn"
 enemy_num = 1
 

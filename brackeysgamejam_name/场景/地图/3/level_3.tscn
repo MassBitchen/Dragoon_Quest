@@ -103,7 +103,7 @@ _data = {
 
 [node name="Level_3" instance=ExtResource("1_jkjbw")]
 script = ExtResource("2_6qlcp")
-text = "3"
+text = "Something’s not right"
 self_path = "res://场景/地图/3/level_3.tscn"
 enemy_num = 5
 

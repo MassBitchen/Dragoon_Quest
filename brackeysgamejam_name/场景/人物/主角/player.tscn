@@ -648,18 +648,17 @@ rotation = 3.14159
 scale = Vector2(0.4, 0.5)
 texture = ExtResource("8_vbl3j")
 
-[node name="talkLabel" type="Label" parent="Body/talk"]
+[node name="talkLabel" type="RichTextLabel" parent="Body/talk"]
 offset_left = 48.0
 offset_top = -295.0
 offset_right = 255.0
 offset_bottom = -200.0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
+pivot_offset = Vector2(104, 49)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 6
-theme_override_font_sizes/font_size = 24
-text = "niha"
-horizontal_alignment = 1
-vertical_alignment = 1
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+text = "[center][color=red][shake]niha"
 autowrap_mode = 2
 
 [node name="arrow" parent="." instance=ExtResource("4_cor5o")]

@@ -10,6 +10,8 @@ extends World
 
 func _ready() -> void:
 	super()
+	if Game.over == true:
+		king.scale.x = -1
 
 func _physics_process(delta: float) -> void:
 	door_2.isopen = Game.door2

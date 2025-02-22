@@ -103,7 +103,7 @@ size = Vector2(5756, 138)
 
 [node name="main" instance=ExtResource("1_qb0vt")]
 script = ExtResource("2_2d852")
-text = "主 世 界"
+text = "Main"
 self_path = "res://场景/地图/_main/main.tscn"
 enemy_num = 100
 bgm = ExtResource("3_5ub1b")

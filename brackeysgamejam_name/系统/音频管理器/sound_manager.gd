@@ -31,3 +31,15 @@ func stop_bgm(stream: AudioStream) -> void:
 func set_volume(bus_index: int, v: float) -> void:
 	var db := linear_to_db(v)
 	AudioServer.set_bus_volume_db(bus_index, db)
+
+
+
+func setup_ui_sounds(node: Node) -> void:
+	var button := node as Button
+	if button:
+		button.pressed.connect(play_sfx.bind("UIPress"))
+		button.focus_entered.connect(play_sfx.bind("UIFocus"))
+		button.mouse_entered.connect(button.grab_focus)
+	
+	for child in node.get_children():
+		setup_ui_sounds(child)

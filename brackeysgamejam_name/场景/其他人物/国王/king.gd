@@ -4,6 +4,8 @@ extends Interactable
 @onready var talk_label: Node2D = $talk_label
 @onready var animated_sprite_2d: AnimatedSprite2D = $body/AnimatedSprite2D
 @onready var talk_sp: Sprite2D = $"body/国王对话框"
+@onready var label: RichTextLabel = $"body/国王对话框/Label"
+@onready var rich_text_label: RichTextLabel = $talk_label/RichTextLabel
 
 var talk = 1
 var talk_2 = 1
@@ -27,6 +29,8 @@ func interact() -> void:
 			animation_player.play("talk_41")
 			animated_sprite_2d.play("talk")
 	else:
+		label.scale.x = -1
+		rich_text_label.scale.x = -1
 		if talk_2 == 1:
 			animation_player.play("talk_1")
 			animated_sprite_2d.play("talk")
@@ -40,7 +44,7 @@ func interact() -> void:
 			animated_sprite_2d.play("talk")
 			talk_2 += 1
 			await get_tree().create_timer(1.5).timeout
-			Game.emit_signal("player_talk","No, there's still one left. ")
+			Game.emit_signal("player_talk","[center][color=red][shake]No, there's still one left. ")
 
 
 func _on_entry() -> void:

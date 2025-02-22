@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://cfb08fvdj6d3s"]
+[gd_scene load_steps=26 format=4 uid="uid://cfb08fvdj6d3s"]
 
 [ext_resource type="PackedScene" uid="uid://bcdxtwprt24cm" path="res://场景/地图/继承/level.tscn" id="1_tsd6p"]
 [ext_resource type="Texture2D" uid="uid://cv2orqael7uo2" path="res://_资源/场景4/天空.jpg" id="2_gj0pd"]
@@ -15,7 +15,12 @@
 [ext_resource type="Script" path="res://脚本/EntryPoint.gd" id="11_l8svp"]
 [ext_resource type="Shader" path="res://场景/地图/4/上帝射线.gdshader" id="12_iupx3"]
 [ext_resource type="PackedScene" uid="uid://cmlt5k61om75r" path="res://场景/小组件/门/door.tscn" id="12_r14yn"]
+[ext_resource type="PackedScene" uid="uid://cros1wmrfuxpj" path="res://场景/小组件/移动平台/move_platform.tscn" id="12_rykmj"]
+[ext_resource type="PackedScene" uid="uid://cqxhslko35blr" path="res://场景/小组件/镜子/mirror.tscn" id="13_bjqr3"]
 [ext_resource type="PackedScene" uid="uid://d4ne15xiq8y61" path="res://场景/小组件/柱子/柱子.tscn" id="13_dv50m"]
+[ext_resource type="PackedScene" uid="uid://bqdooa0bx5pau" path="res://场景/地板/floor_2.tscn" id="14_2qg7e"]
+[ext_resource type="PackedScene" uid="uid://dlpfyj1qune1n" path="res://场景/其他人物/怪物/enemy_1.tscn" id="17_ncae3"]
+[ext_resource type="PackedScene" uid="uid://c47p1724vfsgn" path="res://场景/其他人物/NPC/普通/npc.tscn" id="18_t00en"]
 
 [sub_resource type="Animation" id="Animation_iftj8"]
 length = 0.001
@@ -122,9 +127,9 @@ shader_parameter/seed = 6.0
 
 [node name="Level_4" instance=ExtResource("1_tsd6p")]
 script = ExtResource("2_ohexy")
-text = "4"
+text = "The Ritual"
 self_path = "res://场景/地图/4/level_4.tscn"
-enemy_num = 3
+enemy_num = 7
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="0"]
 libraries = {
@@ -301,6 +306,9 @@ offset_right = 4068.0
 offset_bottom = 492.0
 scale = Vector2(-1, 1)
 
+[node name="TileMapLayer" parent="TileMap" index="0"]
+tile_map_data = PackedByteArray("AAD6/wUAAAADAAwAAAD7/wUAAAAEAAwAAAD8/wUAAAAFAAwAAAD6/wMAAAADAAwAAAD7/wMAAAAEAAwAAAD8/wMAAAAFAAwAAAD6/wEAAAADAAwAAAD7/wEAAAAEAAwAAAD8/wEAAAAFAAwAAAA=")
+
 [node name="floor" type="Node2D" parent="TileMap" index="1"]
 position = Vector2(-932, 520)
 
@@ -319,8 +327,49 @@ position = Vector2(2806, 87)
 [node name="floor5" parent="TileMap/floor" index="4" instance=ExtResource("8_mrhu1")]
 position = Vector2(3694, 87)
 
-[node name="floor6" parent="TileMap/floor" index="5" instance=ExtResource("8_mrhu1")]
+[node name="floor14" parent="TileMap/floor" index="5" instance=ExtResource("8_mrhu1")]
+position = Vector2(3321, -286)
+
+[node name="floor6" parent="TileMap/floor" index="6" instance=ExtResource("8_mrhu1")]
 position = Vector2(4583, 87)
+
+[node name="floor7" parent="TileMap/floor" index="7" instance=ExtResource("8_mrhu1")]
+position = Vector2(1155, -438)
+
+[node name="move_platform" parent="TileMap/floor" index="8" instance=ExtResource("12_rykmj")]
+position = Vector2(2028, -202)
+rate = 0.2
+
+[node name="move_platform2" parent="TileMap/floor" index="9" instance=ExtResource("12_rykmj")]
+position = Vector2(2542, 18)
+rate = 0.3
+
+[node name="mirror" parent="TileMap/floor/move_platform2/AnimatableBody2D" index="3" instance=ExtResource("13_bjqr3")]
+position = Vector2(63, 27.5)
+rotation = 1.5708
+scale = Vector2(0.5, 0.5)
+
+[node name="floor8" parent="TileMap/floor" index="10" instance=ExtResource("14_2qg7e")]
+position = Vector2(895, -171)
+
+[node name="floor10" parent="TileMap/floor" index="11" instance=ExtResource("14_2qg7e")]
+position = Vector2(1249, -794)
+
+[node name="floor11" parent="TileMap/floor" index="12" instance=ExtResource("14_2qg7e")]
+position = Vector2(1993, -602)
+
+[node name="floor12" parent="TileMap/floor" index="13" instance=ExtResource("14_2qg7e")]
+position = Vector2(3227, -558)
+
+[node name="floor13" parent="TileMap/floor" index="14" instance=ExtResource("14_2qg7e")]
+position = Vector2(2634, -609)
+
+[node name="floor9" parent="TileMap/floor" index="15" instance=ExtResource("14_2qg7e")]
+position = Vector2(663, -285)
+rotation = 1.5708
+
+[node name="mirror" parent="TileMap/floor" index="16" instance=ExtResource("13_bjqr3")]
+position = Vector2(1581, -198)
 
 [node name="entry1" type="Marker2D" parent="EntryPoint" index="0"]
 position = Vector2(-559, 588)
@@ -340,6 +389,34 @@ entry_point = "entry1"
 [node name="CanvasModulate" parent="light" index="0"]
 visible = false
 
+[node name="Enemy1" parent="role" index="0" instance=ExtResource("17_ncae3")]
+position = Vector2(114, 21)
+
+[node name="Enemy2" parent="role" index="1" instance=ExtResource("17_ncae3")]
+position = Vector2(-102, 276)
+
+[node name="Enemy3" parent="role" index="2" instance=ExtResource("17_ncae3")]
+position = Vector2(2257, -159)
+
+[node name="Enemy4" parent="role" index="3" instance=ExtResource("17_ncae3")]
+position = Vector2(225, -341)
+
+[node name="NPC" parent="role" index="4" instance=ExtResource("18_t00en")]
+position = Vector2(399, 60)
+texture = "res://_资源/1/npc1.png"
+
+[node name="NPC2" parent="role" index="5" instance=ExtResource("18_t00en")]
+position = Vector2(399, 578)
+texture = "res://_资源/1/npc2.png"
+
+[node name="NPC3" parent="role" index="6" instance=ExtResource("18_t00en")]
+position = Vector2(2047, 224)
+texture = "res://_资源/1/npc3.png"
+
+[node name="NPC4" parent="role" index="7" instance=ExtResource("18_t00en")]
+position = Vector2(1606, -102)
+texture = "res://_资源/1/npc1.png"
+
 [node name="Player" parent="." index="8" instance=ExtResource("9_rceph")]
 position = Vector2(-533, 585)
 
@@ -352,3 +429,5 @@ p = Vector2(0, -364)
 
 [node name="柱子" parent="." index="10" instance=ExtResource("13_dv50m")]
 position = Vector2(3463, 593)
+
+[editable path="TileMap/floor/move_platform2"]

@@ -109,7 +109,7 @@ _data = {
 size = Vector2(5756, 138)
 
 [node name="Level_1" instance=ExtResource("1_s1ums")]
-text = "消 灭"
+text = "Purge"
 self_path = "res://场景/地图/1/level_1.tscn"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="0"]

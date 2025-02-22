@@ -96,7 +96,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": ["You have completed the task perfectly. "]
+"values": ["[center]You have completed the task perfectly. "]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -135,7 +135,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": ["Welcome to the peaceful village of the brave, Mr. Scavenger.
+"values": ["[center]Welcome to the peaceful village of the brave, Mr. Scavenger.
 "]
 }
 tracks/1/type = "value"
@@ -175,7 +175,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": ["Our kingdom has returned to its usual peace."]
+"values": ["[center]Our kingdom has returned to its usual peace."]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -214,7 +214,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": ["Your mission is to fix anything that has gone wrong within the scene.
+"values": ["[center]Your mission is to fix anything that has gone wrong within the scene.
 "]
 }
 tracks/1/type = "value"
@@ -254,7 +254,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": ["Now, nothing can go wrong."]
+"values": ["[center]Now, nothing can go wrong."]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -293,7 +293,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": ["Please ensure that the next visitor can enjoy the village without seeing any "]
+"values": ["[center]Please ensure that the next visitor can enjoy the village without seeing any [color=red][shake]ISSUES."]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -332,7 +332,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": ["Remember, NOTHING CAN GO WRONG here.
+"values": ["[center]Remember, NOTHING CAN GO WRONG here.
 "]
 }
 tracks/1/type = "value"
@@ -410,19 +410,19 @@ region_rect = Rect2(864, 0, 1071, 1872)
 [node name="国王对话框" type="Sprite2D" parent="body"]
 visible = false
 position = Vector2(-206, -438)
-scale = Vector2(0.5, 0.5)
+scale = Vector2(0.7, 0.7)
 texture = ExtResource("6_njiho")
 
-[node name="Label" type="Label" parent="body/国王对话框"]
-offset_left = -454.0
-offset_top = 44.0
-offset_right = 160.0
-offset_bottom = 347.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 48
+[node name="Label" type="RichTextLabel" parent="body/国王对话框"]
+offset_left = -428.0
+offset_top = 82.0
+offset_right = 138.0
+offset_bottom = 322.0
+pivot_offset = Vector2(304, 148)
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 40
+bbcode_enabled = true
 text = "You have completed the task perfectly. "
-horizontal_alignment = 1
-vertical_alignment = 1
 autowrap_mode = 2
 visible_characters = 0
 visible_ratio = 0.0

@@ -13,7 +13,7 @@ extends CharacterBody2D
 @onready var attack_pos: Marker2D = $Body/Mark2D/attack_pos
 @onready var attack_bar: TextureProgressBar = $Body/attack_bar
 @onready var talk: Node2D = $Body/talk
-@onready var talk_label: Label = $Body/talk/talkLabel
+@onready var talk_label: RichTextLabel = $Body/talk/talkLabel
 #Timer
 @onready var coyote_timer: Timer = $Timer/CoyoteTimer
 @onready var jump_request_timer: Timer = $Timer/JumpRequestTimer
@@ -40,7 +40,7 @@ enum Direction {
 		if not is_node_ready():
 			await ready
 		body.scale.x = direction
-const RUN_SPEED := 500.0
+const RUN_SPEED := 300.0
 const FLOOR_ACCELERATION := RUN_SPEED / 0.02
 const AIR_ACCELERATION := RUN_SPEED / 0.03
 const JUMP_VELOCITY := -1000.0
@@ -67,6 +67,8 @@ func _ready() -> void:
 	Game.connect("player_talk", Callable(self , "_on_player_talk"))
 #帧处理动画
 func tick_physics(state: State, _delta: float) -> void:
+	#
+	talk_label.scale.x = direction
 	#让攻击箭头位置正确
 	arrow.global_position = attack_pos.global_position
 	#判断交互提示是否出现
