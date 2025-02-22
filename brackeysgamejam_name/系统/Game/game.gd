@@ -8,13 +8,15 @@ signal camera_should_shake(amount: float)
 signal player_position_update()
 #重开逻辑信号
 signal should_reopen()
+#重开逻辑信号
+signal player_talk(text: String)
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 var door2 :bool = false
 var door3 :bool = false
 var door4 :bool = false
 var door5 :bool = false
-var door6 :bool = false
-var door7 :bool = false
+var over: bool = false
 
 @onready var options: CanvasLayer = $options
 
@@ -91,3 +93,6 @@ func _on_back_pressed() -> void:
 func _on_main_pressed() -> void:
 	options.hide()
 	change_scene("res://场景/地图/_main/main.tscn",{entry_point = "entry1"})
+
+func over_game() -> void:
+	Game.change_scene("res://场景/地图/_end/end.tscn", {entry_point="end"})

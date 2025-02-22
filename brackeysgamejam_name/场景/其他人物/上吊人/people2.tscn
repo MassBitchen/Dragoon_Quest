@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=3 uid="uid://b5fi8xg8c80n0"]
+
+[ext_resource type="Script" path="res://people.gd" id="1_tubab"]
+[ext_resource type="Texture2D" uid="uid://clxsde88wou4e" path="res://_资源/场景4/祭祀用+人.png" id="2_4xk3w"]
+[ext_resource type="Script" path="res://脚本/Hurtbox.gd" id="4_aead8"]
+[ext_resource type="Script" path="res://脚本/StateMachine.gd" id="5_og2gp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4nvdn"]
+size = Vector2(78, 247)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_orp75"]
+radius = 69.0
+height = 184.0
+
+[node name="people" type="CharacterBody2D"]
+script = ExtResource("1_tubab")
+
+[node name="body" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="body"]
+position = Vector2(0, -124)
+texture = ExtResource("2_4xk3w")
+region_enabled = true
+region_rect = Rect2(1138, 493, 198, 491)
+
+[node name="Hurtbox" type="Area2D" parent="body"]
+collision_layer = 32
+collision_mask = 0
+script = ExtResource("4_aead8")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="body/Hurtbox"]
+position = Vector2(11, -7.5)
+shape = SubResource("RectangleShape2D_4nvdn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-3, 3)
+shape = SubResource("CapsuleShape2D_orp75")
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource("5_og2gp")
+
+[connection signal="hurt" from="body/Hurtbox" to="." method="_on_hurtbox_hurt"]

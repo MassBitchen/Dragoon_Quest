@@ -30,10 +30,23 @@ tracks/1/keys = {
 [wave][center]This game may contain mild depictions of blood, violence, and death. If you feel uncomfortable, please exit promptly.
 "]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasLayer/Label:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_xu4tm"]
 resource_name = "start"
 length = 15.0
+step = 0.1
 tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -41,7 +54,7 @@ tracks/0/path = NodePath(".")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(14.8333),
+"times": PackedFloat32Array(13.8),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
@@ -55,7 +68,7 @@ tracks/1/path = NodePath("CanvasLayer/RichTextLabel:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.4, 8.26667, 9.93333, 11.4, 13.2667, 14.6667),
+"times": PackedFloat32Array(0, 0.4, 7.3, 8.9, 10.5, 12.3, 13.7),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
@@ -67,15 +80,28 @@ tracks/2/path = NodePath("CanvasLayer/RichTextLabel:text")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 9.96667),
+"times": PackedFloat32Array(0, 8.9),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": ["
-[wave][center]This game may contain mild depictions of blood, violence, and death. If you feel uncomfortable, please exit promptly.
+[center]This game may contain mild depictions of blood, violence, and death. If you feel uncomfortable, please exit promptly.
 ", "
+
 [wave][center]Welcome to The Kingdom of Nothing Amiss, visitor.
 
 "]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CanvasLayer/Label:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.4, 7.3, 8.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_t0446"]
@@ -94,6 +120,22 @@ libraries = {
 autoplay = "start"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -228.0
+offset_top = -300.0
+offset_right = 220.0
+offset_bottom = -204.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 96
+text = "Warning"
 
 [node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer"]
 modulate = Color(1, 1, 1, 0)

@@ -1,0 +1,249 @@
+[gd_scene load_steps=14 format=3 uid="uid://tpuovtqlyfii"]
+
+[ext_resource type="Script" path="res://场景/其他人物/NPC/说话/talk_npc.gd" id="1_37jfp"]
+[ext_resource type="Texture2D" uid="uid://cmsb80v4w8jms" path="res://_资源/1/npc1.png" id="1_fm3ci"]
+[ext_resource type="Texture2D" uid="uid://doq3e33h7uphb" path="res://_资源/场景0（国王/国王对话框.png" id="3_2yyt7"]
+[ext_resource type="Texture2D" uid="uid://bbey1ywrttwht" path="res://_资源/4/arrow.png" id="4_flnwa"]
+[ext_resource type="Script" path="res://脚本/Hurtbox.gd" id="4_oov40"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o4aob"]
+size = Vector2(61, 160)
+
+[sub_resource type="Animation" id="Animation_yldk7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("body/Sprite2D:hframes")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("body/Sprite2D:vframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("body/Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_k5jdi"]
+resource_name = "idle"
+length = 0.5
+loop_mode = 1
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("body/Sprite2D:hframes")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("body/Sprite2D:vframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("body/Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0p8pm"]
+_data = {
+"RESET": SubResource("Animation_yldk7"),
+"idle": SubResource("Animation_k5jdi")
+}
+
+[sub_resource type="Animation" id="Animation_ylxj6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("body/Sprite2D2:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("body/Sprite2D2/Label:visible_ratio")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_mv8je"]
+resource_name = "talk"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("body/Sprite2D2:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("body/Sprite2D2/Label:visible_ratio")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7i4tg"]
+_data = {
+"RESET": SubResource("Animation_ylxj6"),
+"talk": SubResource("Animation_mv8je")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cyn44"]
+size = Vector2(106, 160)
+
+[node name="talk_npc" type="Area2D"]
+script = ExtResource("1_37jfp")
+
+[node name="body" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="body"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_fm3ci")
+hframes = 4
+vframes = 2
+region_rect = Rect2(0, 0, 1632, 800)
+
+[node name="Sprite2D2" type="Sprite2D" parent="body"]
+visible = false
+position = Vector2(71, -69)
+rotation = 3.14159
+scale = Vector2(0.4, 0.5)
+texture = ExtResource("3_2yyt7")
+
+[node name="Label" type="Label" parent="body/Sprite2D2"]
+offset_left = -396.581
+offset_top = 83.9796
+offset_right = 153.419
+offset_bottom = 281.98
+rotation = 3.14159
+pivot_offset = Vector2(268.291, 103.01)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 48
+text = "Thank you for helping!
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="Hurtbox" type="Area2D" parent="body"]
+collision_layer = 32
+collision_mask = 0
+script = ExtResource("4_oov40")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="body/Hurtbox"]
+position = Vector2(-0.5, 7)
+shape = SubResource("RectangleShape2D_o4aob")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_0p8pm")
+}
+autoplay = "idle"
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_7i4tg")
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 7)
+shape = SubResource("RectangleShape2D_cyn44")
+
+[node name="talk_label" type="Node2D" parent="."]
+visible = false
+position = Vector2(2, 260)
+scale = Vector2(0.5, 0.5)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="talk_label"]
+offset_left = -153.0
+offset_top = -720.0
+offset_right = 146.0
+offset_bottom = -585.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/normal_font_size = 36
+bbcode_enabled = true
+text = "[center][wave]interact"
+
+[node name="Sprite2D4" type="Sprite2D" parent="talk_label"]
+position = Vector2(-2, -659)
+rotation = 1.5708
+scale = Vector2(2, 2)
+texture = ExtResource("4_flnwa")
+
+[connection signal="entry" from="." to="." method="_on_entry"]
+[connection signal="quit" from="." to="." method="_on_quit"]
+[connection signal="hurt" from="body/Hurtbox" to="." method="_on_hurtbox_hurt"]

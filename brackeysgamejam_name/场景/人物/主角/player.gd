@@ -12,6 +12,8 @@ extends CharacterBody2D
 @onready var arrow: Sprite2D = $arrow
 @onready var attack_pos: Marker2D = $Body/Mark2D/attack_pos
 @onready var attack_bar: TextureProgressBar = $Body/attack_bar
+@onready var talk: Node2D = $Body/talk
+@onready var talk_label: Label = $Body/talk/talkLabel
 #Timer
 @onready var coyote_timer: Timer = $Timer/CoyoteTimer
 @onready var jump_request_timer: Timer = $Timer/JumpRequestTimer
@@ -38,7 +40,7 @@ enum Direction {
 		if not is_node_ready():
 			await ready
 		body.scale.x = direction
-const RUN_SPEED := 300.0
+const RUN_SPEED := 500.0
 const FLOOR_ACCELERATION := RUN_SPEED / 0.02
 const AIR_ACCELERATION := RUN_SPEED / 0.03
 const JUMP_VELOCITY := -1000.0
@@ -48,6 +50,7 @@ var PlayerPosition :Vector2 = Vector2.ZERO
 #实例场景
 var BULLET = load("res://场景/人物/火球/fireball.tscn")
 var reopen_path
+var canmove := true
 #预处理
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("jump"):
@@ -61,6 +64,7 @@ func _unhandled_input(event: InputEvent) -> void:
 #ready
 func _ready() -> void:
 	randomize()
+	Game.connect("player_talk", Callable(self , "_on_player_talk"))
 #帧处理动画
 func tick_physics(state: State, _delta: float) -> void:
 	#让攻击箭头位置正确
@@ -171,19 +175,20 @@ func transition_state(from: State, to: State) -> void:
 			player_eye.visible = false
 #移动方法---
 func Player_move(gravity: float, delta: float, rate: float) -> void:
-	#返回一个+-1
-	var movement := Input.get_axis("move_left", "move_right")
-	#判断摩擦
-	var acceleration := FLOOR_ACCELERATION if is_on_floor() else AIR_ACCELERATION
-	#限制速度
-	velocity.x = move_toward(velocity.x, movement * RUN_SPEED * rate, acceleration * delta)
-	if abs(velocity.y) <= -JUMP_VELOCITY:
-		velocity.y += gravity * delta
-		if velocity.y > 0:
-			velocity.y += 0
-	if not is_zero_approx(movement):
-		direction = Direction.LEFT if movement < 0 else Direction.RIGHT
-	move_and_slide()
+	if canmove:
+		#返回一个+-1
+		var movement := Input.get_axis("move_left", "move_right")
+		#判断摩擦
+		var acceleration := FLOOR_ACCELERATION if is_on_floor() else AIR_ACCELERATION
+		#限制速度
+		velocity.x = move_toward(velocity.x, movement * RUN_SPEED * rate, acceleration * delta)
+		if abs(velocity.y) <= -JUMP_VELOCITY:
+			velocity.y += gravity * delta
+			if velocity.y > 0:
+				velocity.y += 0
+		if not is_zero_approx(movement):
+			direction = Direction.LEFT if movement < 0 else Direction.RIGHT
+		move_and_slide()
 #攻击进度条
 func Player_AttackBar_move(delta) -> void:
 	attack_bar.value = move_toward(attack_bar.value, 1, 0.01)
@@ -221,3 +226,16 @@ func _on_wink_timer_timeout() -> void:
 #受伤
 func _on_hurtbox_hurt(hitbox: Variant) -> void:
 	Game.change_scene(reopen_path, {entry_point = "entry1"})
+#玩家说话
+func _on_player_talk(text) -> void:
+	talk.show()
+	canmove = false
+	talk_label.text = text
+	talk_label.visible_ratio = 0
+	var tween := create_tween()
+	tween.tween_property(talk_label, "visible_ratio", 1, 1)
+	await get_tree().create_timer(3).timeout
+	talk.hide()
+	Game.animation_player.play("over")
+	canmove = true
+	

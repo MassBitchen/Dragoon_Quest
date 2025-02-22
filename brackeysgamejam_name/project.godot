@@ -89,7 +89,8 @@ esc={
 2d_physics/layer_4="M"
 2d_physics/layer_5="PH"
 2d_physics/layer_6="EH"
+2d_render/defaults/default_clear_color=Color(0.00412971, 0.00713518, 0.0557841, 1)
 
 [rendering]
 
-environment/defaults/default_clear_color=Color(0.00412971, 0.00713518, 0.0557841, 1)
+environment/defaults/default_clear_color=Color(0, 0, 0, 1)

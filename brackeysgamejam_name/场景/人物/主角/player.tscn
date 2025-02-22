@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://d3pdj2pxxurb6"]
+[gd_scene load_steps=29 format=3 uid="uid://d3pdj2pxxurb6"]
 
 [ext_resource type="Script" path="res://脚本/StateMachine.gd" id="1_o6q0p"]
 [ext_resource type="Script" path="res://场景/人物/主角/player.gd" id="1_srj1n"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://ed2p8xav76ig" path="res://_资源/4/UI_1.png" id="5_3dffk"]
 [ext_resource type="Script" path="res://脚本/Hurtbox.gd" id="5_jcfqb"]
 [ext_resource type="Texture2D" uid="uid://bhogwj5vqbl8v" path="res://_资源/1/Player_2.png" id="8_8d0ev"]
+[ext_resource type="Texture2D" uid="uid://doq3e33h7uphb" path="res://_资源/场景0（国王/国王对话框.png" id="8_vbl3j"]
 
 [sub_resource type="Gradient" id="Gradient_wb0vu"]
 interpolation_mode = 2
@@ -637,6 +638,29 @@ max_value = 1.0
 step = 0.0
 texture_over = SubResource("AtlasTexture_v8gwo")
 texture_progress = SubResource("AtlasTexture_oolrh")
+
+[node name="talk" type="Node2D" parent="Body"]
+visible = false
+
+[node name="Sprite2D" type="Sprite2D" parent="Body/talk"]
+position = Vector2(94, -147)
+rotation = 3.14159
+scale = Vector2(0.4, 0.5)
+texture = ExtResource("8_vbl3j")
+
+[node name="talkLabel" type="Label" parent="Body/talk"]
+offset_left = 48.0
+offset_top = -295.0
+offset_right = 255.0
+offset_bottom = -200.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 24
+text = "niha"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
 
 [node name="arrow" parent="." instance=ExtResource("4_cor5o")]
 visible = false

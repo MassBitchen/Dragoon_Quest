@@ -1,8 +1,83 @@
-[gd_scene load_steps=4 format=3 uid="uid://cj0gctse0pcy0"]
+[gd_scene load_steps=7 format=3 uid="uid://cj0gctse0pcy0"]
 
 [ext_resource type="Script" path="res://系统/Game/game.gd" id="1_hi6ew"]
 [ext_resource type="PackedScene" uid="uid://dxx5ugdvsdq2v" path="res://场景/UI/音量滑块/音量滑块.tscn" id="2_a6j02"]
 [ext_resource type="Script" path="res://系统/Game/options.gd" id="2_v1qux"]
+
+[sub_resource type="Animation" id="Animation_q7ddx"]
+resource_name = "over"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect2:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.96667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.96667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"over_game"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ColorRect2:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_eowgj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect2:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect2:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_o80mq"]
+_data = {
+"RESET": SubResource("Animation_eowgj"),
+"over": SubResource("Animation_q7ddx")
+}
 
 [node name="Game" type="CanvasLayer"]
 script = ExtResource("1_hi6ew")
@@ -35,6 +110,22 @@ theme_override_constants/outline_size = 6
 theme_override_font_sizes/font_size = 48
 text = "镜 子"
 horizontal_alignment = 1
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.863436, 5.31845e-06, 7.70092e-07, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_o80mq")
+}
 
 [node name="options" type="CanvasLayer" parent="."]
 process_mode = 2

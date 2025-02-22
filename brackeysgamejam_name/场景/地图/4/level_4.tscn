@@ -1,0 +1,354 @@
+[gd_scene load_steps=21 format=3 uid="uid://cfb08fvdj6d3s"]
+
+[ext_resource type="PackedScene" uid="uid://bcdxtwprt24cm" path="res://场景/地图/继承/level.tscn" id="1_tsd6p"]
+[ext_resource type="Texture2D" uid="uid://cv2orqael7uo2" path="res://_资源/场景4/天空.jpg" id="2_gj0pd"]
+[ext_resource type="Script" path="res://场景/地图/4/level_4.gd" id="2_ohexy"]
+[ext_resource type="Texture2D" uid="uid://degsy7ivhiuiu" path="res://_资源/场景4/大多云.png" id="3_s81ur"]
+[ext_resource type="Texture2D" uid="uid://cg7cqxa7j1syi" path="res://_资源/场景3/后景（小孩头消失）.png" id="4_y1og7"]
+[ext_resource type="Texture2D" uid="uid://j4lup03345tt" path="res://_资源/场景1/底4（中景）.png" id="5_xql7h"]
+[ext_resource type="Texture2D" uid="uid://dj48op77tphp5" path="res://_资源/场景1/底5（前景）.png" id="6_2xt8b"]
+[ext_resource type="Texture2D" uid="uid://ft50b4a8b484" path="res://_资源/2/零件x4.png" id="7_pih6d"]
+[ext_resource type="Texture2D" uid="uid://durkg0bkr5tl3" path="res://_资源/场景4/柱子.png" id="7_rtqe6"]
+[ext_resource type="PackedScene" uid="uid://douwj6xpqrvo1" path="res://场景/地板/floor_1.tscn" id="8_mrhu1"]
+[ext_resource type="PackedScene" uid="uid://d3pdj2pxxurb6" path="res://场景/人物/主角/player.tscn" id="9_rceph"]
+[ext_resource type="PackedScene" uid="uid://yv21d5ap61pu" path="res://场景/小组件/摄像机/camera.tscn" id="10_mw0it"]
+[ext_resource type="Script" path="res://脚本/EntryPoint.gd" id="11_l8svp"]
+[ext_resource type="Shader" path="res://场景/地图/4/上帝射线.gdshader" id="12_iupx3"]
+[ext_resource type="PackedScene" uid="uid://cmlt5k61om75r" path="res://场景/小组件/门/door.tscn" id="12_r14yn"]
+[ext_resource type="PackedScene" uid="uid://d4ne15xiq8y61" path="res://场景/小组件/柱子/柱子.tscn" id="13_dv50m"]
+
+[sub_resource type="Animation" id="Animation_iftj8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BG/2/云:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(965, 382)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BG/2/云2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(965, 382)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BG/2/云:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_oey36"]
+resource_name = "yun"
+length = 4.0
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BG/2/云:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.4, 2, 2.0001),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(965, 382), Vector2(-1519.3, 382), Vector2(4514, 382), Vector2(4514, 382)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BG/2/云2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.4, 2, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(4514, 382), Vector2(2029.7, 382), Vector2(965, 382), Vector2(-1519.3, 382)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BG/2/云:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.4, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_j8snc"]
+_data = {
+"RESET": SubResource("Animation_iftj8"),
+"yun": SubResource("Animation_oey36")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_exycq"]
+shader = ExtResource("12_iupx3")
+shader_parameter/angle = -0.3
+shader_parameter/position = 0.0
+shader_parameter/spread = 0.544
+shader_parameter/cutoff = 0.233
+shader_parameter/falloff = 0.593
+shader_parameter/edge_fade = 0.15
+shader_parameter/speed = 2.0
+shader_parameter/ray1_density = 8.0
+shader_parameter/ray2_density = 30.0
+shader_parameter/ray2_intensity = 0.3
+shader_parameter/color = Color(0.988235, 0.984314, 1, 0.768627)
+shader_parameter/hdr = false
+shader_parameter/seed = 6.0
+
+[node name="Level_4" instance=ExtResource("1_tsd6p")]
+script = ExtResource("2_ohexy")
+text = "4"
+self_path = "res://场景/地图/4/level_4.tscn"
+enemy_num = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="0"]
+libraries = {
+"": SubResource("AnimationLibrary_j8snc")
+}
+autoplay = "yun"
+speed_scale = 0.05
+
+[node name="1" type="ParallaxLayer" parent="BG" index="0"]
+motion_scale = Vector2(0, 0)
+
+[node name="底1" type="Sprite2D" parent="BG/1" index="0"]
+position = Vector2(965, 382)
+texture = ExtResource("2_gj0pd")
+
+[node name="3" type="ParallaxLayer" parent="BG" index="1"]
+scale = Vector2(0.7, 0.7)
+motion_scale = Vector2(0.05, 0)
+
+[node name="底1" type="Sprite2D" parent="BG/3" index="0"]
+position = Vector2(1661.43, 827.143)
+texture = ExtResource("4_y1og7")
+
+[node name="底2" type="Sprite2D" parent="BG/3" index="1"]
+position = Vector2(3977.14, 827.143)
+texture = ExtResource("4_y1og7")
+
+[node name="底3" type="Sprite2D" parent="BG/3" index="2"]
+position = Vector2(-652.857, 831.429)
+texture = ExtResource("4_y1og7")
+
+[node name="2" type="ParallaxLayer" parent="BG" index="2"]
+position = Vector2(153, 192)
+motion_scale = Vector2(0, 0)
+
+[node name="云" type="Sprite2D" parent="BG/2" index="0"]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(965, 382)
+texture = ExtResource("3_s81ur")
+
+[node name="云2" type="Sprite2D" parent="BG/2" index="1"]
+position = Vector2(965, 382)
+texture = ExtResource("3_s81ur")
+
+[node name="4" type="ParallaxLayer" parent="BG" index="3"]
+position = Vector2(0, -64)
+motion_scale = Vector2(0.3, 0.3)
+
+[node name="底1" type="Sprite2D" parent="BG/4" index="0"]
+position = Vector2(965, 554.3)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("5_xql7h")
+region_enabled = true
+region_rect = Rect2(0, 0, 2808, 1118)
+
+[node name="底2" type="Sprite2D" parent="BG/4" index="1"]
+position = Vector2(2928, 557.3)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("5_xql7h")
+
+[node name="底3" type="Sprite2D" parent="BG/4" index="2"]
+position = Vector2(-998, 551.3)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("5_xql7h")
+region_enabled = true
+region_rect = Rect2(0, 0, 2804, 1118)
+
+[node name="5" type="ParallaxLayer" parent="BG" index="4"]
+position = Vector2(0, -168)
+motion_scale = Vector2(0.5, 1)
+
+[node name="底1" type="Sprite2D" parent="BG/5" index="0"]
+position = Vector2(805, 309)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("6_2xt8b")
+
+[node name="底2" type="Sprite2D" parent="BG/5" index="1"]
+position = Vector2(2427, 309)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("7_rtqe6")
+
+[node name="底3" type="Sprite2D" parent="BG/5" index="2"]
+position = Vector2(-817, 309)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("6_2xt8b")
+
+[node name="花环" type="Sprite2D" parent="BG/5" index="3"]
+position = Vector2(-1338.05, -67)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("7_pih6d")
+region_enabled = true
+region_rect = Rect2(875, 95, 237, 221)
+
+[node name="花环2" type="Sprite2D" parent="BG/5" index="4"]
+position = Vector2(-793.05, -67)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("7_pih6d")
+region_enabled = true
+region_rect = Rect2(875, 95, 237, 221)
+
+[node name="花环3" type="Sprite2D" parent="BG/5" index="5"]
+position = Vector2(-272.05, -67)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("7_pih6d")
+region_enabled = true
+region_rect = Rect2(875, 95, 237, 221)
+
+[node name="底4" type="Sprite2D" parent="BG/5" index="6"]
+position = Vector2(4049, 309)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("6_2xt8b")
+
+[node name="花环8" type="Sprite2D" parent="BG/5" index="7"]
+position = Vector2(3536.95, -67)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("7_pih6d")
+region_enabled = true
+region_rect = Rect2(875, 95, 237, 221)
+
+[node name="花环10" type="Sprite2D" parent="BG/5" index="8"]
+position = Vector2(4081.95, -67)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("7_pih6d")
+region_enabled = true
+region_rect = Rect2(875, 95, 237, 221)
+
+[node name="花环11" type="Sprite2D" parent="BG/5" index="9"]
+position = Vector2(4602.95, -67)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("7_pih6d")
+region_enabled = true
+region_rect = Rect2(875, 95, 237, 221)
+
+[node name="花环4" type="Sprite2D" parent="BG/5" index="10"]
+position = Vector2(287.9, -67)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("7_pih6d")
+region_enabled = true
+region_rect = Rect2(875, 95, 237, 221)
+
+[node name="花环5" type="Sprite2D" parent="BG/5" index="11"]
+position = Vector2(832.9, -67)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("7_pih6d")
+region_enabled = true
+region_rect = Rect2(875, 95, 237, 221)
+
+[node name="花环6" type="Sprite2D" parent="BG/5" index="12"]
+position = Vector2(1353.9, -67)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("7_pih6d")
+region_enabled = true
+region_rect = Rect2(875, 95, 237, 221)
+
+[node name="花环7" type="Sprite2D" parent="BG/5" index="13"]
+position = Vector2(1908.9, -67)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("7_pih6d")
+region_enabled = true
+region_rect = Rect2(875, 95, 237, 221)
+
+[node name="花环9" type="Sprite2D" parent="BG/5" index="14"]
+position = Vector2(2974.9, -67)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("7_pih6d")
+region_enabled = true
+region_rect = Rect2(875, 95, 237, 221)
+
+[node name="ColorRect" type="ColorRect" parent="BG/5" index="15"]
+material = SubResource("ShaderMaterial_exycq")
+offset_left = 2960.0
+offset_top = -228.0
+offset_right = 4068.0
+offset_bottom = 492.0
+scale = Vector2(-1, 1)
+
+[node name="floor" type="Node2D" parent="TileMap" index="1"]
+position = Vector2(-932, 520)
+
+[node name="floor1" parent="TileMap/floor" index="0" instance=ExtResource("8_mrhu1")]
+position = Vector2(0, 87)
+
+[node name="floor2" parent="TileMap/floor" index="1" instance=ExtResource("8_mrhu1")]
+position = Vector2(888, 87)
+
+[node name="floor3" parent="TileMap/floor" index="2" instance=ExtResource("8_mrhu1")]
+position = Vector2(1777, 87)
+
+[node name="floor4" parent="TileMap/floor" index="3" instance=ExtResource("8_mrhu1")]
+position = Vector2(2806, 87)
+
+[node name="floor5" parent="TileMap/floor" index="4" instance=ExtResource("8_mrhu1")]
+position = Vector2(3694, 87)
+
+[node name="floor6" parent="TileMap/floor" index="5" instance=ExtResource("8_mrhu1")]
+position = Vector2(4583, 87)
+
+[node name="entry1" type="Marker2D" parent="EntryPoint" index="0"]
+position = Vector2(-559, 588)
+script = ExtResource("11_l8svp")
+
+[node name="door" parent="Door" index="0" instance=ExtResource("12_r14yn")]
+position = Vector2(-561, 587)
+path = "res://场景/地图/_main/main.tscn"
+entry_point = "entry5"
+isopen = true
+
+[node name="door2" parent="Door" index="1" instance=ExtResource("12_r14yn")]
+position = Vector2(3960, 587)
+path = "res://场景/地图/5/level_5.tscn"
+entry_point = "entry1"
+
+[node name="CanvasModulate" parent="light" index="0"]
+visible = false
+
+[node name="Player" parent="." index="8" instance=ExtResource("9_rceph")]
+position = Vector2(-533, 585)
+
+[node name="Camera" parent="." index="9" instance=ExtResource("10_mw0it")]
+position = Vector2(-38, 2108)
+limit_left = -1600
+limit_top = -360
+limit_bottom = 700
+p = Vector2(0, -364)
+
+[node name="柱子" parent="." index="10" instance=ExtResource("13_dv50m")]
+position = Vector2(3463, 593)

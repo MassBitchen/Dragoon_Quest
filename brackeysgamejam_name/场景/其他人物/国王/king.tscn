@@ -1,0 +1,460 @@
+[gd_scene load_steps=21 format=3 uid="uid://u4o2pm61tyo2"]
+
+[ext_resource type="Texture2D" uid="uid://dv2odfickh86b" path="res://_资源/场景0（国王/国王.png" id="1_125pk"]
+[ext_resource type="Script" path="res://场景/其他人物/国王/king.gd" id="1_p887i"]
+[ext_resource type="Texture2D" uid="uid://duuys1wnmskiw" path="res://_资源/场景0（国王/地毯.png" id="2_nikkm"]
+[ext_resource type="Texture2D" uid="uid://dls2jrafw711b" path="res://_资源/场景0（国王/国王头（张嘴）.png" id="2_slo1d"]
+[ext_resource type="Texture2D" uid="uid://dh0rtby0p60e7" path="res://_资源/场景0（国王/国王头（闭嘴.png" id="3_yynjy"]
+[ext_resource type="Texture2D" uid="uid://doq3e33h7uphb" path="res://_资源/场景0（国王/国王对话框.png" id="6_njiho"]
+[ext_resource type="Texture2D" uid="uid://bbey1ywrttwht" path="res://_资源/4/arrow.png" id="7_ho7ly"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uddlw"]
+atlas = ExtResource("2_slo1d")
+region = Rect2(0, 0, 1935, 1872)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m2tue"]
+atlas = ExtResource("3_yynjy")
+region = Rect2(0, 0, 1935, 1872)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rbb0e"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uddlw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m2tue")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uddlw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m2tue")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uddlw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m2tue")
+}],
+"loop": false,
+"name": &"talk",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kd3yw"]
+size = Vector2(444, 248)
+
+[sub_resource type="Animation" id="Animation_kmopg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("body/国王对话框/Label:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["You have completed the task perfectly. "]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("body/国王对话框/Label:visible_ratio")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("body/国王对话框:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_kqw4i"]
+resource_name = "talk_1"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("body/国王对话框/Label:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["You have completed the task perfectly. "]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("body/国王对话框/Label:visible_ratio")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("body/国王对话框:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_tn8h1"]
+resource_name = "talk_11"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("body/国王对话框/Label:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["Welcome to the peaceful village of the brave, Mr. Scavenger.
+"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("body/国王对话框/Label:visible_ratio")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("body/国王对话框:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_i31lh"]
+resource_name = "talk_2"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("body/国王对话框/Label:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["Our kingdom has returned to its usual peace."]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("body/国王对话框/Label:visible_ratio")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("body/国王对话框:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_x8g7r"]
+resource_name = "talk_21"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("body/国王对话框/Label:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["Your mission is to fix anything that has gone wrong within the scene.
+"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("body/国王对话框/Label:visible_ratio")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("body/国王对话框:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_7gqt4"]
+resource_name = "talk_3"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("body/国王对话框/Label:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["Now, nothing can go wrong."]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("body/国王对话框/Label:visible_ratio")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("body/国王对话框:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_j1lpo"]
+resource_name = "talk_31"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("body/国王对话框/Label:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["Please ensure that the next visitor can enjoy the village without seeing any "]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("body/国王对话框/Label:visible_ratio")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("body/国王对话框:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_m8bnq"]
+resource_name = "talk_41"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("body/国王对话框/Label:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["Remember, NOTHING CAN GO WRONG here.
+"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("body/国王对话框/Label:visible_ratio")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("body/国王对话框:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pfnyy"]
+_data = {
+"RESET": SubResource("Animation_kmopg"),
+"talk_1": SubResource("Animation_kqw4i"),
+"talk_11": SubResource("Animation_tn8h1"),
+"talk_2": SubResource("Animation_i31lh"),
+"talk_21": SubResource("Animation_x8g7r"),
+"talk_3": SubResource("Animation_7gqt4"),
+"talk_31": SubResource("Animation_j1lpo"),
+"talk_41": SubResource("Animation_m8bnq")
+}
+
+[node name="king" type="Area2D"]
+script = ExtResource("1_p887i")
+
+[node name="body" type="Node2D" parent="."]
+
+[node name="地毯" type="Sprite2D" parent="body"]
+position = Vector2(-218, -412)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_nikkm")
+
+[node name="Sprite2D2" type="Sprite2D" parent="body"]
+position = Vector2(-177, 0)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_125pk")
+offset = Vector2(-80, -832)
+region_enabled = true
+region_rect = Rect2(0, 0, 864, 1872)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="body"]
+position = Vector2(191, -808)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_rbb0e")
+animation = &"talk"
+frame = 5
+frame_progress = 1.0
+offset = Vector2(-304, 768)
+
+[node name="Sprite2D" type="Sprite2D" parent="body"]
+position = Vector2(306, 0)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_125pk")
+offset = Vector2(-80, -832)
+region_enabled = true
+region_rect = Rect2(864, 0, 1071, 1872)
+
+[node name="国王对话框" type="Sprite2D" parent="body"]
+visible = false
+position = Vector2(-206, -438)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("6_njiho")
+
+[node name="Label" type="Label" parent="body/国王对话框"]
+offset_left = -454.0
+offset_top = 44.0
+offset_right = 160.0
+offset_bottom = 347.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 48
+text = "You have completed the task perfectly. "
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-212, -140)
+shape = SubResource("RectangleShape2D_kd3yw")
+
+[node name="talk_label" type="Node2D" parent="."]
+visible = false
+
+[node name="RichTextLabel" type="RichTextLabel" parent="talk_label"]
+offset_left = -153.0
+offset_top = -720.0
+offset_right = 146.0
+offset_bottom = -585.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/normal_font_size = 36
+bbcode_enabled = true
+text = "[center][wave]interact"
+
+[node name="Sprite2D4" type="Sprite2D" parent="talk_label"]
+position = Vector2(-2, -659)
+rotation = 1.5708
+scale = Vector2(2, 2)
+texture = ExtResource("7_ho7ly")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_pfnyy")
+}
+
+[connection signal="entry" from="." to="." method="_on_entry"]
+[connection signal="quit" from="." to="." method="_on_quit"]

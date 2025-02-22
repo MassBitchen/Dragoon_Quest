@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://ctypf5rkdib8c"]
+[gd_scene load_steps=30 format=3 uid="uid://ctypf5rkdib8c"]
 
 [ext_resource type="PackedScene" uid="uid://bcdxtwprt24cm" path="res://场景/地图/继承/level.tscn" id="1_8bgvu"]
 [ext_resource type="Texture2D" uid="uid://es7vr0vyx3hw" path="res://_资源/场景1/底1.png" id="2_4j8a7"]
@@ -20,6 +20,93 @@
 [ext_resource type="PackedScene" uid="uid://c47p1724vfsgn" path="res://场景/其他人物/NPC/普通/npc.tscn" id="16_604bw"]
 [ext_resource type="Texture2D" uid="uid://c2iuahonw5tm1" path="res://_资源/2/平台（可穿透_不可穿透）.png" id="16_r38gf"]
 [ext_resource type="Script" path="res://脚本/Hitbox.gd" id="20_en14r"]
+
+[sub_resource type="Animation" id="Animation_iftj8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BG/2/云:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(965, 382)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BG/2/云2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(965, 382)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BG/2/云:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_oey36"]
+resource_name = "yun"
+length = 4.0
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BG/2/云:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.4, 2, 2.0001),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(965, 382), Vector2(-1519.3, 382), Vector2(4514, 382), Vector2(4514, 382)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BG/2/云2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.4, 2, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(4514, 382), Vector2(2029.7, 382), Vector2(965, 382), Vector2(-1519.3, 382)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BG/2/云:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.4, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_j8snc"]
+_data = {
+"RESET": SubResource("Animation_iftj8"),
+"yun": SubResource("Animation_oey36")
+}
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_muagq"]
 texture = ExtResource("16_r38gf")
@@ -169,6 +256,13 @@ script = ExtResource("2_oiqr7")
 text = "镜 子"
 self_path = "res://场景/地图/2/level_2.tscn"
 enemy_num = 3
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="." index="0"]
+libraries = {
+"": SubResource("AnimationLibrary_j8snc")
+}
+autoplay = "yun"
+speed_scale = 0.05
 
 [node name="1" type="ParallaxLayer" parent="BG" index="0"]
 motion_scale = Vector2(0, 0)
@@ -347,7 +441,7 @@ color = Color(1, 1, 1, 1)
 [node name="Enemy1" parent="role" index="0" instance=ExtResource("11_cx8jj")]
 position = Vector2(198, 541)
 
-[node name="open" type="Node2D" parent="." index="7"]
+[node name="open" type="Node2D" parent="." index="8"]
 position = Vector2(-932, -585)
 
 [node name="floor7" parent="open" index="0" instance=ExtResource("9_itu06")]
@@ -362,62 +456,60 @@ position = Vector2(2063, -66)
 [node name="floor1" parent="open" index="3" instance=ExtResource("15_0b6m1")]
 position = Vector2(1606, -396)
 
-[node name="floor5" parent="open" index="4" instance=ExtResource("15_0b6m1")]
-position = Vector2(1777, -227)
-
-[node name="floor2" parent="open" index="5" instance=ExtResource("15_0b6m1")]
+[node name="floor2" parent="open" index="4" instance=ExtResource("15_0b6m1")]
 position = Vector2(2010, -710)
 
-[node name="floor3" parent="open" index="6" instance=ExtResource("15_0b6m1")]
+[node name="floor3" parent="open" index="5" instance=ExtResource("15_0b6m1")]
 position = Vector2(1908, -846)
 rotation = 1.5708
 
-[node name="Enemy1" parent="open" index="7" instance=ExtResource("11_cx8jj")]
+[node name="Enemy1" parent="open" index="6" instance=ExtResource("11_cx8jj")]
 position = Vector2(2028, -778)
 
-[node name="floor4" parent="open" index="8" instance=ExtResource("8_60xsl")]
+[node name="floor4" parent="open" index="7" instance=ExtResource("8_60xsl")]
 position = Vector2(2796, 75)
 
-[node name="Enemy2" parent="open" index="9" instance=ExtResource("11_cx8jj")]
+[node name="Enemy2" parent="open" index="8" instance=ExtResource("11_cx8jj")]
 position = Vector2(2763, 10)
 
-[node name="NPC" parent="open" index="10" instance=ExtResource("16_604bw")]
+[node name="NPC" parent="open" index="9" instance=ExtResource("16_604bw")]
 position = Vector2(2080, -80)
 texture = "res://_资源/1/npc3.png"
 
-[node name="mirror" parent="open" index="11" instance=ExtResource("11_xc1c7")]
+[node name="mirror" parent="open" index="10" instance=ExtResource("11_xc1c7")]
 position = Vector2(2537, -600)
 rotation = 0.20944
 
-[node name="TileMapLayer" type="TileMapLayer" parent="open" index="12"]
+[node name="TileMapLayer" type="TileMapLayer" parent="open" index="11"]
 position = Vector2(932, 585)
+tile_map_data = PackedByteArray(0, 0, 9, 0, 245, 255, 0, 0, 3, 0, 12, 0, 0, 0, 10, 0, 245, 255, 0, 0, 4, 0, 12, 0, 0, 0, 11, 0, 245, 255, 0, 0, 5, 0, 12, 0, 0, 0)
 tile_set = SubResource("TileSet_yktno")
 
-[node name="door" parent="open" index="13" instance=ExtResource("9_viwh2")]
+[node name="door" parent="open" index="12" instance=ExtResource("9_viwh2")]
 position = Vector2(1710, 64)
 path = "res://场景/地图/3/level_3.tscn"
 entry_point = "entry1"
 
-[node name="Camera" parent="." index="8" instance=ExtResource("9_vveie")]
+[node name="Camera" parent="." index="9" instance=ExtResource("9_vveie")]
 position = Vector2(-38, 2108)
 limit_left = -1600
 limit_top = -360
 limit_bottom = 700
 p = Vector2(0, -364)
 
-[node name="mirror" parent="." index="9" instance=ExtResource("11_xc1c7")]
+[node name="mirror" parent="." index="10" instance=ExtResource("11_xc1c7")]
 position = Vector2(-1, -235)
 rotation = 1.57172
 
-[node name="Player" parent="." index="10" instance=ExtResource("12_v77jn")]
+[node name="Player" parent="." index="11" instance=ExtResource("12_v77jn")]
 position = Vector2(-621, 591)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="11"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="12"]
 libraries = {
 "": SubResource("AnimationLibrary_ckxfe")
 }
 
-[node name="Hitbox" type="Area2D" parent="." index="12"]
+[node name="Hitbox" type="Area2D" parent="." index="13"]
 collision_layer = 0
 collision_mask = 16
 script = ExtResource("20_en14r")

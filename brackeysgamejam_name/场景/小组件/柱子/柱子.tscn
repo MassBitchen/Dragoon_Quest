@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://d4ne15xiq8y61"]
+
+[ext_resource type="Texture2D" uid="uid://clxsde88wou4e" path="res://_资源/场景4/祭祀用+人.png" id="1_yls6w"]
+[ext_resource type="PackedScene" uid="uid://b71elbyr2qa5w" path="res://场景/其他人物/上吊人/people1.tscn" id="2_5ox8w"]
+[ext_resource type="PackedScene" uid="uid://b5fi8xg8c80n0" path="res://场景/其他人物/上吊人/people2.tscn" id="3_f5ug7"]
+[ext_resource type="PackedScene" uid="uid://ct25ugxt5r3v5" path="res://场景/其他人物/上吊人/people3.tscn" id="4_drpy7"]
+
+[node name="柱子" type="Node2D"]
+scale = Vector2(0.7, 0.7)
+
+[node name="body" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="body"]
+texture = ExtResource("1_yls6w")
+offset = Vector2(3, -611)
+region_enabled = true
+region_rect = Rect2(170, 119, 656, 1271)
+
+[node name="people" parent="." instance=ExtResource("2_5ox8w")]
+position = Vector2(-173, -461)
+
+[node name="people2" parent="." instance=ExtResource("3_f5ug7")]
+position = Vector2(243, -398)
+
+[node name="people3" parent="." instance=ExtResource("4_drpy7")]
+position = Vector2(138, -1100)
