@@ -234,8 +234,7 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 12
 theme_override_font_sizes/normal_font_size = 128
 bbcode_enabled = true
-text = "[wave][center]Dragoon Quest[/center][/wave]
-[font_size=84][shake][center]What can go wrong[/center][shake]"
+text = "[wave][center]The Nothing Amiss Kingdom[/center][/wave]"
 
 [node name="PointLight2D" type="PointLight2D" parent="title" index="1"]
 position = Vector2(664, 152)
