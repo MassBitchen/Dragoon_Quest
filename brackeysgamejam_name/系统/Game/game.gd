@@ -77,7 +77,7 @@ func play_level_name(text: String) -> void:
 	level_name.text = text
 	var tween := create_tween()
 	tween.tween_property(level_name, "modulate", Color(1,1,1,1), 0.4)
-	tween.tween_property(level_name, "modulate", Color(1,1,1,1), 1)
+	tween.tween_property(level_name, "modulate", Color(1,1,1,1), 3)
 	tween.tween_property(level_name, "modulate", Color(1,1,1,0), 0.4)
 
 

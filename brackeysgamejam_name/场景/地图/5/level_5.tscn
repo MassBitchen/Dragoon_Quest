@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://dvkwv1430ifmn"]
+[gd_scene load_steps=25 format=4 uid="uid://dvkwv1430ifmn"]
 
 [ext_resource type="PackedScene" uid="uid://bcdxtwprt24cm" path="res://场景/地图/继承/level.tscn" id="1_uk2gk"]
 [ext_resource type="Script" path="res://场景/地图/5/level_5.gd" id="2_gjp23"]
@@ -18,6 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://tpuovtqlyfii" path="res://场景/其他人物/NPC/说话/talk_npc.tscn" id="14_8ywes"]
 [ext_resource type="PackedScene" uid="uid://yv21d5ap61pu" path="res://场景/小组件/摄像机/camera.tscn" id="14_nmqe2"]
 [ext_resource type="PackedScene" uid="uid://io7qfdchyxbv" path="res://场景/其他人物/NPC/说话/spec.tscn" id="15_djyib"]
+[ext_resource type="Script" path="res://脚本/Hitbox.gd" id="19_qy1yx"]
 
 [sub_resource type="Animation" id="Animation_iftj8"]
 length = 0.001
@@ -121,6 +122,9 @@ shader_parameter/ray2_intensity = 0.3
 shader_parameter/color = Color(0.988235, 0.984314, 1, 0.768627)
 shader_parameter/hdr = false
 shader_parameter/seed = 6.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x482y"]
+size = Vector2(7893, 138)
 
 [node name="Level_5" instance=ExtResource("1_uk2gk")]
 script = ExtResource("2_gjp23")
@@ -410,5 +414,14 @@ limit_left = -1600
 limit_top = -360
 limit_bottom = 700
 p = Vector2(0, -364)
+
+[node name="Hitbox" type="Area2D" parent="." index="10"]
+collision_layer = 0
+collision_mask = 16
+script = ExtResource("19_qy1yx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" index="0"]
+position = Vector2(1559.5, 1143)
+shape = SubResource("RectangleShape2D_x482y")
 
 [connection signal="tree_exited" from="role/specx" to="." method="_on_specx_tree_exited"]

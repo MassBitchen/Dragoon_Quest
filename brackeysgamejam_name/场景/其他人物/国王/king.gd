@@ -30,7 +30,6 @@ func interact() -> void:
 			animated_sprite_2d.play("talk")
 	else:
 		label.scale.x = -1
-		rich_text_label.scale.x = -1
 		if talk_2 == 1:
 			animation_player.play("talk_1")
 			animated_sprite_2d.play("talk")
@@ -49,6 +48,8 @@ func interact() -> void:
 
 func _on_entry() -> void:
 	talk_label.show()
+	if Game.over == true:
+		rich_text_label.scale.x = -1
 
 
 func _on_quit() -> void:

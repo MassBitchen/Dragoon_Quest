@@ -21,9 +21,9 @@ enum Direction {
 		if not is_node_ready():
 			await ready
 		body.scale.x = direction
-const RUN_SPEED := 300.0
-const FLOOR_ACCELERATION := RUN_SPEED / 0.02
-const AIR_ACCELERATION := RUN_SPEED / 0.03
+@export var RUN_SPEED := 300.0
+var FLOOR_ACCELERATION := RUN_SPEED / 0.02
+var AIR_ACCELERATION := RUN_SPEED / 0.03
 var default_gravity := ProjectSettings.get("physics/2d/default_gravity") * 2 as float
 #ready
 func _ready() -> void:

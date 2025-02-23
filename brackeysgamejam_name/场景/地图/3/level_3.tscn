@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bhxoi88e4kpar"]
+[gd_scene load_steps=19 format=3 uid="uid://bhxoi88e4kpar"]
 
 [ext_resource type="PackedScene" uid="uid://bcdxtwprt24cm" path="res://场景/地图/继承/level.tscn" id="1_jkjbw"]
 [ext_resource type="Script" path="res://场景/地图/3/level_3.gd" id="2_6qlcp"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://cmlt5k61om75r" path="res://场景/小组件/门/door.tscn" id="11_6pq1g"]
 [ext_resource type="PackedScene" uid="uid://d3pdj2pxxurb6" path="res://场景/人物/主角/player.tscn" id="12_veuc3"]
 [ext_resource type="PackedScene" uid="uid://yv21d5ap61pu" path="res://场景/小组件/摄像机/camera.tscn" id="13_8kjev"]
+[ext_resource type="Script" path="res://脚本/Hitbox.gd" id="14_md6rs"]
 
 [sub_resource type="Animation" id="Animation_iftj8"]
 length = 0.001
@@ -100,6 +101,9 @@ _data = {
 "RESET": SubResource("Animation_iftj8"),
 "yun": SubResource("Animation_oey36")
 }
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6ptl0"]
+size = Vector2(5756, 138)
 
 [node name="Level_3" instance=ExtResource("1_jkjbw")]
 script = ExtResource("2_6qlcp")
@@ -295,3 +299,12 @@ limit_left = -1600
 limit_top = -360
 limit_bottom = 700
 p = Vector2(0, -364)
+
+[node name="Hitbox" type="Area2D" parent="." index="10"]
+collision_layer = 0
+collision_mask = 16
+script = ExtResource("14_md6rs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" index="0"]
+position = Vector2(902, 1143)
+shape = SubResource("RectangleShape2D_6ptl0")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=4 uid="uid://cfb08fvdj6d3s"]
+[gd_scene load_steps=29 format=4 uid="uid://cfb08fvdj6d3s"]
 
 [ext_resource type="PackedScene" uid="uid://bcdxtwprt24cm" path="res://场景/地图/继承/level.tscn" id="1_tsd6p"]
 [ext_resource type="Texture2D" uid="uid://cv2orqael7uo2" path="res://_资源/场景4/天空.jpg" id="2_gj0pd"]
@@ -21,6 +21,8 @@
 [ext_resource type="PackedScene" uid="uid://bqdooa0bx5pau" path="res://场景/地板/floor_2.tscn" id="14_2qg7e"]
 [ext_resource type="PackedScene" uid="uid://dlpfyj1qune1n" path="res://场景/其他人物/怪物/enemy_1.tscn" id="17_ncae3"]
 [ext_resource type="PackedScene" uid="uid://c47p1724vfsgn" path="res://场景/其他人物/NPC/普通/npc.tscn" id="18_t00en"]
+[ext_resource type="PackedScene" uid="uid://bgwduib0f5h5d" path="res://场景/小组件/留言板/textboard.tscn" id="22_ktt14"]
+[ext_resource type="Script" path="res://脚本/Hitbox.gd" id="23_bv6q4"]
 
 [sub_resource type="Animation" id="Animation_iftj8"]
 length = 0.001
@@ -124,6 +126,9 @@ shader_parameter/ray2_intensity = 0.3
 shader_parameter/color = Color(0.988235, 0.984314, 1, 0.768627)
 shader_parameter/hdr = false
 shader_parameter/seed = 6.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qffyl"]
+size = Vector2(7893, 138)
 
 [node name="Level_4" instance=ExtResource("1_tsd6p")]
 script = ExtResource("2_ohexy")
@@ -396,7 +401,8 @@ position = Vector2(114, 21)
 position = Vector2(-102, 276)
 
 [node name="Enemy3" parent="role" index="2" instance=ExtResource("17_ncae3")]
-position = Vector2(2257, -159)
+position = Vector2(2139, -100)
+RUN_SPEED = 0.0
 
 [node name="Enemy4" parent="role" index="3" instance=ExtResource("17_ncae3")]
 position = Vector2(225, -341)
@@ -430,4 +436,27 @@ p = Vector2(0, -364)
 [node name="柱子" parent="." index="10" instance=ExtResource("13_dv50m")]
 position = Vector2(3463, 593)
 
+[node name="textboard" parent="." index="11" instance=ExtResource("22_ktt14")]
+position = Vector2(3789, 591)
+scale = Vector2(1.5, 1.5)
+text = "Remeber!don't leave anything that looks wrong in our Kingdom"
+
+[node name="textLabel" parent="textboard" index="3"]
+offset_left = -201.0
+offset_top = -125.0
+offset_right = -36.0
+offset_bottom = -40.0
+theme_override_font_sizes/font_size = 12
+
+[node name="Hitbox" type="Area2D" parent="." index="12"]
+collision_layer = 0
+collision_mask = 16
+script = ExtResource("23_bv6q4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" index="0"]
+position = Vector2(1559.5, 1143)
+shape = SubResource("RectangleShape2D_qffyl")
+
 [editable path="TileMap/floor/move_platform2"]
+[editable path="role/Enemy3"]
+[editable path="textboard"]
